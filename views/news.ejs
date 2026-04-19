@@ -1,0 +1,162 @@
+<%- include('partials/head', { title: 'News & Updates' }) %>
+<body class="font-body bg-cream overflow-x-hidden">
+
+<%- include('partials/nav') %>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="absolute inset-0 hero-pattern opacity-20"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    <span class="section-label text-gold-400">Stay Informed</span>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mt-2 mb-4">News & Updates</h1>
+    <p class="text-white/70 text-lg max-w-2xl mx-auto">Latest happenings, events, and stories from Butemine Primary School and our community.</p>
+  </div>
+</section>
+
+<!-- Featured News -->
+<section class="py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-16 reveal">
+      <span class="section-label">Latest Stories</span>
+      <h2 class="section-title">School <em class="text-terracotta-500">Highlights</em></h2>
+      <div class="gold-divider mx-auto mt-5"></div>
+    </div>
+
+    <!-- News Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <%
+      const newsItems = [
+        {
+          category: 'Academic',
+          date: 'March 2025',
+          title: 'Standard 7 Students Begin Revision Programme',
+          excerpt: 'Our Standard 7 pupils have commenced their intensive national examination revision programme. Teachers are working closely with students to ensure thorough preparation for the PSLE examinations.',
+          icon: 'M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 0 12 20.055a11.952 11.952 0 0 0-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z',
+          color: 'terracotta',
+          featured: true
+        },
+        {
+          category: 'Community',
+          date: 'February 2025',
+          title: 'New Classroom Block Construction Underway',
+          excerpt: 'Thanks to generous donations from supporters around the world, construction of a new two-classroom block at Samunge HQ has officially begun. The new block will ease overcrowding and accommodate more students.',
+          icon: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10',
+          color: 'forest',
+          featured: false
+        },
+        {
+          category: 'Events',
+          date: 'January 2025',
+          title: 'Annual Sports Day Brings Joy to Samunge',
+          excerpt: 'Students from all three Butemine centres gathered at Samunge HQ for the annual Sports Day. Events included running races, tug-of-war, and traditional Batemi cultural dances. A wonderful day of community spirit.',
+          icon: 'M8 21l4-8 4 8M12 3v10',
+          color: 'gold',
+          featured: false
+        },
+        {
+          category: 'Milestone',
+          date: 'December 2024',
+          title: 'End of Year Celebration & Prize Giving',
+          excerpt: 'Butemine Primary School held its annual end-of-year prize giving ceremony. Top performing students across all classes were recognised and awarded. Parents and community members joined in the celebrations.',
+          icon: 'M5 3l14 9-14 9V3z',
+          color: 'terracotta',
+          featured: false
+        },
+        {
+          category: 'Volunteers',
+          date: 'November 2024',
+          title: 'International Volunteer Teachers Arrive',
+          excerpt: 'We warmly welcomed two international volunteer teachers from Europe who joined our staff for the school term. Their contribution to English language instruction and science lessons has been invaluable.',
+          icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M23 21v-2a4 4 0 0 1-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
+          color: 'forest',
+          featured: false
+        },
+        {
+          category: 'Support',
+          date: 'October 2024',
+          title: 'Orphan Support Fund Reaches 30 Beneficiaries',
+          excerpt: 'The Butemine Orphan Support Fund now covers 30 students who would otherwise be unable to attend school. These children receive full fee waiver, school materials, and a daily meal. Your donations make this possible.',
+          icon: 'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z',
+          color: 'gold',
+          featured: false
+        },
+      ];
+      %>
+
+      <% newsItems.forEach((item, idx) => { %>
+      <article class="card reveal group cursor-pointer hover:-translate-y-1 transition-transform duration-300 <%= idx === 0 ? 'md:col-span-2 lg:col-span-1' : '' %>">
+        <!-- Category Badge -->
+        <div class="flex items-center justify-between mb-4">
+          <span class="inline-flex items-center gap-1.5 bg-<%= item.color %>-100 text-<%= item.color %>-700 text-xs font-bold px-3 py-1 rounded-full">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="<%= item.icon %>"/>
+            </svg>
+            <%= item.category %>
+          </span>
+          <span class="text-bark/40 text-xs"><%= item.date %></span>
+        </div>
+
+        <!-- Content -->
+        <h3 class="font-display text-lg font-bold text-bark mb-3 group-hover:text-terracotta-600 transition-colors leading-snug">
+          <%= item.title %>
+        </h3>
+        <p class="text-bark/65 text-sm leading-relaxed mb-4"><%= item.excerpt %></p>
+
+        <!-- Read more -->
+        <div class="flex items-center gap-2 text-<%= item.color %>-600 text-xs font-semibold mt-auto">
+          <span>Read more</span>
+          <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+
+    <!-- Notice -->
+    <div class="card reveal border-l-4 border-l-gold-500 bg-gold-50 max-w-3xl mx-auto text-center">
+      <div class="flex items-start gap-3 justify-center">
+        <svg class="w-5 h-5 text-gold-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <p class="text-bark/70 text-sm leading-relaxed">
+          More news and updates will be added regularly. Follow us on
+          <a href="https://www.facebook.com/share/1CfGeEVe3b/" target="_blank" rel="noopener noreferrer" class="text-terracotta-500 font-semibold hover:underline">Facebook</a> and
+          <a href="https://www.instagram.com/butemineschool" target="_blank" rel="noopener noreferrer" class="text-terracotta-500 font-semibold hover:underline">Instagram</a>
+          for the latest from Butemine.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Categories Banner -->
+<section class="py-16 bg-bark relative overflow-hidden">
+  <div class="absolute inset-0 hero-pattern opacity-10"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4">
+    <div class="text-center mb-10 reveal">
+      <h2 class="font-display text-2xl md:text-3xl text-white font-bold mb-2">Browse by Category</h2>
+      <p class="text-white/60 text-sm">Filter news by topic</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 reveal">
+      <% ['All News', 'Academic', 'Events', 'Community', 'Volunteers', 'Support', 'Milestone'].forEach(cat => { %>
+      <button class="px-5 py-2.5 rounded-full text-sm font-semibold border-2 border-white/20 text-white/70 hover:border-gold-400 hover:text-gold-400 transition-colors">
+        <%= cat %>
+      </button>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-cream">
+  <div class="max-w-3xl mx-auto px-4 text-center reveal">
+    <h3 class="font-display text-2xl font-bold text-bark mb-3">Have a Story to Share?</h3>
+    <p class="text-bark/70 mb-6">Are you a parent, volunteer, or community member with a story about Butemine? We would love to hear from you.</p>
+    <a href="/contact" class="btn-primary">Get In Touch</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

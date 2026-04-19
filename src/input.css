@@ -7,8 +7,8 @@
 
   body {
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-    background-color: #FAF6EF;
-    color: #2C1810;
+    background-color: #F4F8FF;
+    color: #0D1B3E;
     line-height: 1.7;
   }
 
@@ -21,24 +21,28 @@
 @layer components {
   /* Buttons */
   .btn-primary {
-    @apply inline-block bg-terracotta-500 text-white font-semibold px-8 py-3 rounded-lg
+    @apply inline-block bg-terracotta-500 text-white font-semibold px-8 py-3 rounded-xl
            hover:bg-terracotta-600 active:bg-terracotta-700 transition-all duration-300
            shadow-md hover:shadow-lg hover:-translate-y-0.5;
   }
   .btn-outline {
-    @apply inline-block border-2 border-white text-white font-semibold px-8 py-3 rounded-lg
+    @apply inline-block border-2 border-white text-white font-semibold px-8 py-3 rounded-xl
            hover:bg-white hover:text-terracotta-500 transition-all duration-300;
   }
   .btn-gold {
-    @apply inline-block bg-gold-500 text-white font-semibold px-8 py-3 rounded-lg
-           hover:bg-gold-600 transition-all duration-300 shadow-md hover:shadow-lg;
+    @apply inline-block bg-gold-500 text-white font-semibold px-8 py-3 rounded-xl
+           hover:bg-gold-600 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5;
   }
   .btn-outline-dark {
-    @apply inline-block border-2 border-terracotta-500 text-terracotta-500 font-semibold px-8 py-3 rounded-lg
+    @apply inline-block border-2 border-terracotta-500 text-terracotta-500 font-semibold px-8 py-3 rounded-xl
            hover:bg-terracotta-500 hover:text-white transition-all duration-300;
   }
+  .btn-donate-nav {
+    @apply inline-flex items-center border-2 border-gold-400 text-gold-400 font-semibold rounded-xl
+           hover:bg-gold-400 hover:text-white transition-all duration-300;
+  }
 
-  /* Section labels */
+  /* Labels */
   .section-label {
     @apply inline-block text-gold-500 font-semibold uppercase tracking-widest text-xs mb-3;
   }
@@ -52,77 +56,320 @@
   /* Cards */
   .card {
     @apply bg-white rounded-2xl p-8 shadow-sm border border-terracotta-100
-           hover:shadow-md hover:-translate-y-1 transition-all duration-300;
+           hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+  }
+  .card-hover-gold {
+    @apply hover:border-gold-300 hover:shadow-gold-100/60;
   }
 
   /* Page hero */
   .page-hero {
-    @apply relative pt-40 pb-24 overflow-hidden;
-    background: linear-gradient(135deg, #2C1810 0%, #8C3A1E 60%, #C9920A 100%);
+    @apply relative pt-40 pb-28 overflow-hidden;
+    background: linear-gradient(135deg, #070E1F 0%, #0D1B3E 45%, #1A3478 75%, #4A90D9 100%);
   }
 
   /* Nav link */
   .nav-link {
-    @apply text-sm font-medium relative after:absolute after:bottom-0 after:left-0
-           after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all after:duration-300
+    @apply text-sm font-medium relative
+           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5
+           after:bg-gold-500 after:transition-all after:duration-300
            hover:after:w-full hover:text-gold-400 transition-colors duration-200;
   }
 
   /* Divider */
-  .gold-divider {
-    @apply w-16 h-1 bg-gold-500 rounded-full my-4;
+  .gold-divider { @apply w-16 h-1 bg-gold-500 rounded-full my-4; }
+
+  /* Testimonial */
+  .testimonial-card {
+    @apply absolute inset-0 flex flex-col justify-center px-10 py-8
+           opacity-0 transition-opacity duration-700 pointer-events-none;
+  }
+  .testimonial-card.t-active {
+    @apply opacity-100 pointer-events-auto;
   }
 }
 
 @layer utilities {
   .font-display { font-family: 'Playfair Display', Georgia, serif; }
 
-  /* Stagger animation delays */
+  /* Stagger delays */
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
-
-  /* Opacity 0 initial (for JS-triggered animations) */
-  .opacity-init { opacity: 0; }
 }
 
-/* Scrolled navbar */
+/* ─── Scrolled navbar ──────────────────────────────────────────── */
 #navbar.scrolled {
-  background: rgba(250, 246, 239, 0.98);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(44, 24, 16, 0.1);
+  background: rgba(240, 247, 255, 0.97);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 2px 24px rgba(15, 25, 62, 0.12);
 }
-#navbar.scrolled .nav-link { color: #2C1810; }
-#navbar.scrolled .nav-logo-text { color: #2C1810; }
+#navbar.scrolled .nav-link  { color: #0D1B3E; }
+#navbar.scrolled .nav-link:hover { color: #4A90D9; }
+#navbar.scrolled .nav-logo-text { color: #0D1B3E; }
 
-/* Hero texture overlay */
+/* ─── Hero dot pattern ─────────────────────────────────────────── */
 .hero-pattern {
-  background-image: radial-gradient(circle, rgba(201, 146, 10, 0.15) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(201,146,10,0.18) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #FAF6EF; }
-::-webkit-scrollbar-thumb { background: #8C3A1E; border-radius: 3px; }
-
-/* Gallery image hover */
-.gallery-item img {
-  transition: transform 0.5s ease;
+/* ─── Hero floating orbs ───────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-18px) rotate(3deg); }
+  66%       { transform: translateY(-8px) rotate(-2deg); }
 }
-.gallery-item:hover img {
-  transform: scale(1.05);
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-22px) rotate(-4deg); }
+}
+.float-1 { animation: float  8s ease-in-out infinite; }
+.float-2 { animation: float2 6s ease-in-out infinite; }
+.float-3 { animation: float  10s ease-in-out infinite 2s; }
+
+/* ─── Logo pulse ring ──────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.logo-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid rgba(201,146,10,0.5);
+  animation: pulse-ring 2.5s ease-out infinite;
 }
 
-/* Fade-in animation for intersection observer */
+/* ─── Section wave dividers ────────────────────────────────────── */
+.wave-bottom { position: relative; }
+.wave-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 70px;
+  pointer-events: none;
+}
+
+/* ─── Scroll reveal ────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ─── Animations ───────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in-up { animation: fadeInUp 0.9s ease forwards; }
+.animate-fade-in    { animation: fadeIn   1s ease forwards; }
+
+/* ─── Gallery ──────────────────────────────────────────────────── */
+.gallery-item img { transition: transform 0.6s ease; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item .overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-item:hover .overlay { opacity: 1; }
+
+/* ─── Hamburger → X ────────────────────────────────────────────── */
+#menu-btn span { transition: transform 0.3s ease, opacity 0.3s ease; }
+#menu-btn.is-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+#menu-btn.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+#menu-btn.is-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ─── Mobile menu slide ────────────────────────────────────────── */
+#mobile-menu {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* ─── WhatsApp float button ────────────────────────────────────── */
+.whatsapp-btn {
+  animation: float2 4s ease-in-out infinite;
+}
+.whatsapp-btn:hover { animation: none; }
+
+/* ─── Back to top ──────────────────────────────────────────────── */
+#back-to-top {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#back-to-top:hover { transform: translateY(-3px); }
+
+/* ─── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #FAF6EF; }
+::-webkit-scrollbar-thumb { background: #4A90D9; border-radius: 3px; }
+
+/* ─── Form focus ───────────────────────────────────────────────── */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(27, 172, 228, 0.2);
+}
+
+/* ─── Selection color ──────────────────────────────────────────── */
+::selection { background: #4A90D9; color: white; }
+
+/* ══════════════════════════════════════════════════════════════════
+   DARK MODE OVERRIDES
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Base */
+.dark body                    { background-color: #080F20; color: #D4E3FF; }
+.dark h1, .dark h2,
+.dark h3, .dark h4            { color: #E8F0FF; }
+
+/* Backgrounds */
+.dark .bg-cream               { background-color: #080F20 !important; }
+.dark .bg-white               { background-color: #111E36 !important; }
+.dark section.bg-white        { background-color: #111E36 !important; }
+.dark section.bg-cream        { background-color: #080F20 !important; }
+.dark .bg-gold-50             { background-color: #0D2010 !important; }
+.dark .bg-gray-50             { background-color: #111E36 !important; }
+
+/* Cards */
+.dark .card {
+  background-color: #111E36 !important;
+  border-color: rgba(74,144,217,0.15) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4) !important;
+}
+.dark .card:hover {
+  box-shadow: 0 8px 32px rgba(74,144,217,0.15) !important;
+  border-color: rgba(74,144,217,0.3) !important;
+}
+
+/* Text */
+.dark .text-bark              { color: #D4E3FF !important; }
+.dark .text-bark\/70          { color: rgba(212,227,255,0.7) !important; }
+.dark .text-bark\/65          { color: rgba(212,227,255,0.65) !important; }
+.dark .text-bark\/60          { color: rgba(212,227,255,0.6) !important; }
+.dark .text-bark\/50          { color: rgba(212,227,255,0.5) !important; }
+.dark .text-bark\/40          { color: rgba(212,227,255,0.4) !important; }
+.dark .section-title          { color: #E8F0FF; }
+
+/* Borders */
+.dark .border-terracotta-100  { border-color: rgba(74,144,217,0.15) !important; }
+.dark .border-b               { border-color: rgba(255,255,255,0.08) !important; }
+.dark .border-t               { border-color: rgba(255,255,255,0.08) !important; }
+.dark .border-gray-100,
+.dark .border-gray-200        { border-color: rgba(255,255,255,0.08) !important; }
+.dark .divide-gray-100 > * + * { border-color: rgba(255,255,255,0.08) !important; }
+
+/* Navbar scrolled in dark mode */
+.dark #navbar.scrolled {
+  background: rgba(8,15,32,0.97);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+}
+.dark #navbar.scrolled .nav-link     { color: #D4E3FF; }
+.dark #navbar.scrolled .nav-link:hover { color: #4A90D9; }
+.dark #navbar.scrolled .nav-logo-text { color: #E8F0FF; }
+.dark #more-menu {
+  background: rgba(8,15,32,0.98);
+}
+
+/* Results table rows */
+.dark tr.hover\:bg-cream\/50:hover   { background-color: rgba(255,255,255,0.04) !important; }
+.dark .bg-gray-50\/50                { background-color: rgba(255,255,255,0.03) !important; }
+.dark table thead tr                 { background-color: #0D1628 !important; }
+
+/* Light-tinted backgrounds → dark equivalents */
+.dark .bg-forest-50   { background-color: rgba(45,125,50,0.15) !important; }
+.dark .bg-forest-100  { background-color: rgba(45,125,50,0.22) !important; }
+.dark .bg-terracotta-50  { background-color: rgba(74,144,217,0.12) !important; }
+.dark .bg-terracotta-100 { background-color: rgba(74,144,217,0.2) !important; }
+.dark .bg-gold-100    { background-color: rgba(67,168,71,0.2) !important; }
+.dark .bg-gray-100    { background-color: rgba(255,255,255,0.08) !important; }
+.dark .bg-red-100     { background-color: rgba(220,38,38,0.2) !important; }
+.dark .bg-gray-200    { background-color: rgba(255,255,255,0.12) !important; }
+
+/* Borders on light-tinted cards */
+.dark .border-forest-100  { border-color: rgba(45,125,50,0.3) !important; }
+.dark .border-forest-200  { border-color: rgba(45,125,50,0.4) !important; }
+
+/* Paragraph / body text opacity variants — all of them */
+.dark .text-bark\/90  { color: rgba(212,227,255,0.90) !important; }
+.dark .text-bark\/85  { color: rgba(212,227,255,0.85) !important; }
+.dark .text-bark\/80  { color: rgba(212,227,255,0.80) !important; }
+.dark .text-bark\/75  { color: rgba(212,227,255,0.75) !important; }
+.dark .text-bark\/70  { color: rgba(212,227,255,0.70) !important; }
+.dark .text-bark\/65  { color: rgba(212,227,255,0.65) !important; }
+.dark .text-bark\/60  { color: rgba(212,227,255,0.60) !important; }
+.dark .text-bark\/50  { color: rgba(212,227,255,0.50) !important; }
+.dark .text-bark\/40  { color: rgba(212,227,255,0.40) !important; }
+.dark .text-bark\/30  { color: rgba(212,227,255,0.30) !important; }
+
+/* Forest text on light backgrounds */
+.dark .text-forest-700  { color: #6DBF70 !important; }
+.dark .text-forest-800  { color: #8CD68F !important; }
+
+/* Gold notice/info boxes */
+.dark .text-gold-700  { color: #6DBF70 !important; }
+
+/* Gold notice card in dark mode */
+.dark .bg-gold-50     { background-color: rgba(27,82,30,0.25) !important; }
+.dark .border-l-gold-500 { border-left-color: #43A847 !important; }
+
+/* bg-bark sections stay dark in dark mode (already dark) */
+.dark .bg-bark { background-color: #080F20 !important; }
+
+/* Testimonials section border */
+.dark .border-y { border-color: rgba(255,255,255,0.07) !important; }
+
+/* About page — story section dark bg */
+.dark .bg-bark\/5   { background-color: rgba(255,255,255,0.03) !important; }
+.dark .bg-bark\/10  { background-color: rgba(255,255,255,0.05) !important; }
+
+/* Terracotta-tinted icon backgrounds */
+.dark .bg-terracotta-50 { background-color: rgba(74,144,217,0.12) !important; }
+
+/* General: any element with text-bark class (non-opacity) */
+.dark [class*="text-bark"]:not([class*="text-bark/"]) { color: #D4E3FF !important; }
+
+/* Scrollbar */
+.dark ::-webkit-scrollbar-track { background: #0D1628; }
+
+/* Theme toggle button */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  background: transparent;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: #4A90D9;
+  background: rgba(74,144,217,0.15);
+}
+.dark .theme-toggle {
+  border-color: rgba(212,227,255,0.3);
+  color: #D4E3FF;
+}
+#navbar.scrolled .theme-toggle  { border-color: rgba(13,27,62,0.3); color: #0D1B3E; }
+.dark #navbar.scrolled .theme-toggle { border-color: rgba(212,227,255,0.3); color: #D4E3FF; }
+
+/* Sun icon (shown in dark mode), Moon icon (shown in light mode) */
+.icon-moon { display: block; }
+.icon-sun  { display: none; }
+.dark .icon-moon { display: none; }
+.dark .icon-sun  { display: block; }

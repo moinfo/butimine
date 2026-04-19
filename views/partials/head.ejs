@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Butemine English Medium Pre & Primary School — Quality education in Samunge, Ngorongoro District, Tanzania. Daycare, Nursery, and Primary education for children." />
+  <meta name="description" content="Butemine Primary School — Quality education in Samunge, Ngorongoro District, Tanzania. Daycare, Nursery, and Primary education for children." />
   <title><%= typeof title !== 'undefined' ? title + ' | ' : '' %>Butemine School — Tanzania</title>
 
   <!-- Google Fonts -->
@@ -16,4 +16,13 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/logo.png" />
+
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme');
+      if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))
+        document.documentElement.classList.add('dark');
+    })();
+  </script>
 </head>

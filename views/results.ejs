@@ -1,0 +1,333 @@
+<%- include('partials/head', { title: 'Academic Results' }) %>
+<body class="font-body bg-cream overflow-x-hidden">
+
+<%- include('partials/nav') %>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="absolute inset-0 hero-pattern opacity-20"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    <span class="section-label text-gold-400">NECTA Official Results</span>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mt-2 mb-4">Academic Results</h1>
+    <p class="text-white/70 text-lg max-w-2xl mx-auto">Standard 7 National Examination (PSLE) results — verified from NECTA. School Code: <span class="text-gold-400 font-semibold">PS0107080</span></p>
+  </div>
+</section>
+
+<!-- Achievement Banner -->
+<section class="py-10 bg-forest-700 relative overflow-hidden">
+  <div class="absolute inset-0 hero-pattern opacity-10"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+    <p class="text-white font-display text-xl md:text-2xl font-bold">
+      🏆 <span class="text-gold-400">4 Consecutive Years</span> of Grade A Performance · Ngorongoro District <span class="text-gold-400">Best Primary School</span> (PSLE 2022)
+    </p>
+  </div>
+</section>
+
+<!-- Summary Stats -->
+<section class="py-16 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <% [
+        { value: '66', suffix: '', label: 'Total Candidates', sub: '2022 – 2025', color: 'bark' },
+        { value: '65', suffix: '', label: 'Grade A Students', sub: 'Out of 66 total', color: 'forest' },
+        { value: '100', suffix: '%', label: 'Pass Rate', sub: '2022, 2024 & 2025', color: 'terracotta' },
+        { value: '268', suffix: '', label: 'School Avg Score', sub: 'Out of 300', color: 'gold' },
+      ].forEach(stat => { %>
+      <div class="text-center reveal">
+        <div class="font-display text-5xl font-bold text-<%= stat.color === 'bark' ? 'bark' : stat.color + '-500' %> mb-1">
+          <span class="counter" data-target="<%= stat.value %>">0</span><%= stat.suffix %>
+        </div>
+        <div class="text-bark font-semibold text-sm mb-1"><%= stat.label %></div>
+        <div class="text-bark/50 text-xs"><%= stat.sub %></div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Results by Year -->
+<section class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-16 reveal">
+      <span class="section-label">Standard 7 · PSLE</span>
+      <h2 class="section-title">Results by <em class="text-terracotta-500">Year</em></h2>
+      <div class="gold-divider mx-auto mt-5"></div>
+    </div>
+
+    <div class="space-y-8">
+
+      <!-- 2025 -->
+      <div class="card reveal overflow-hidden p-0">
+        <div class="bg-bark px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full">LATEST</span>
+              <h3 class="font-display text-2xl font-bold text-white">PSLE 2025</h3>
+            </div>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">266.65 / 300 — Grade A (Excellent)</span></p>
+          </div>
+          <div class="flex gap-6 text-right">
+            <div>
+              <div class="text-3xl font-display font-bold text-gold-400">26/26</div>
+              <div class="text-white/50 text-xs">Candidates Passed</div>
+            </div>
+            <div>
+              <div class="text-3xl font-display font-bold text-green-400">100%</div>
+              <div class="text-white/50 text-xs">Pass Rate</div>
+            </div>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-cream border-b border-gray-200">
+                <th class="text-left px-6 py-3 font-semibold text-bark/70 text-xs uppercase tracking-wider">Subject</th>
+                <th class="px-4 py-3 text-center font-semibold text-forest-700 text-xs uppercase tracking-wider">Grade A</th>
+                <th class="px-4 py-3 text-center font-semibold text-terracotta-600 text-xs uppercase tracking-wider">Grade B</th>
+                <th class="px-4 py-3 text-center font-semibold text-bark/60 text-xs uppercase tracking-wider">Avg Score /50</th>
+                <th class="px-4 py-3 text-center font-semibold text-bark/60 text-xs uppercase tracking-wider">School Grade</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <% [
+                { subject: 'Science & Technology', a: 26, b: 0, avg: 48.85, grade: 'A' },
+                { subject: 'English Language',     a: 26, b: 0, avg: 47.23, grade: 'A' },
+                { subject: 'Kiswahili',             a: 26, b: 0, avg: 46.92, grade: 'A' },
+                { subject: 'Civics & Ethics',       a: 26, b: 0, avg: 45.04, grade: 'A' },
+                { subject: 'Social Studies',        a: 26, b: 0, avg: 41.42, grade: 'A' },
+                { subject: 'Mathematics',           a: 26, b: 0, avg: 37.19, grade: 'B' },
+              ].forEach((row, i) => { %>
+              <tr class="hover:bg-cream/50 transition-colors <%= i % 2 === 0 ? '' : 'bg-gray-50/30' %>">
+                <td class="px-6 py-3.5 font-medium text-bark"><%= row.subject %></td>
+                <td class="px-4 py-3.5 text-center">
+                  <span class="inline-block min-w-[36px] px-2 py-0.5 rounded-md bg-forest-100 text-forest-700 font-bold text-xs"><%= row.a %></span>
+                </td>
+                <td class="px-4 py-3.5 text-center">
+                  <span class="inline-block min-w-[36px] px-2 py-0.5 rounded-md <%= row.b > 0 ? 'bg-terracotta-100 text-terracotta-700' : 'bg-gray-50 text-gray-400' %> font-bold text-xs"><%= row.b %></span>
+                </td>
+                <td class="px-4 py-3.5 text-center">
+                  <div class="flex items-center justify-center gap-2">
+                    <div class="w-20 h-1.5 rounded-full bg-gray-200 overflow-hidden">
+                      <div class="h-full rounded-full bg-forest-500" style="width:<%= (row.avg/50*100).toFixed(0) %>%"></div>
+                    </div>
+                    <span class="font-semibold text-bark text-xs"><%= row.avg %></span>
+                  </div>
+                </td>
+                <td class="px-4 py-3.5 text-center">
+                  <span class="inline-block px-3 py-1 rounded-full text-xs font-bold <%= row.grade === 'A' ? 'bg-forest-100 text-forest-700' : 'bg-terracotta-100 text-terracotta-700' %>"><%= row.grade %></span>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-6 py-3 bg-forest-50 border-t border-forest-100 flex items-center gap-2">
+          <svg class="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <span class="text-forest-700 text-xs font-semibold">All 26 candidates (12 girls, 14 boys) achieved Grade A overall. Source: NECTA 2025</span>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="card reveal overflow-hidden p-0">
+        <div class="bg-forest-700 px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-white mb-1">PSLE 2024</h3>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">271.36 / 300 — Grade A (Excellent)</span></p>
+          </div>
+          <div class="flex gap-6 text-right">
+            <div>
+              <div class="text-3xl font-display font-bold text-gold-400">14/14</div>
+              <div class="text-white/50 text-xs">Candidates Passed</div>
+            </div>
+            <div>
+              <div class="text-3xl font-display font-bold text-green-400">100%</div>
+              <div class="text-white/50 text-xs">Pass Rate</div>
+            </div>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-cream border-b border-gray-200">
+                <th class="text-left px-6 py-3 font-semibold text-bark/70 text-xs uppercase tracking-wider">Subject</th>
+                <th class="px-4 py-3 text-center font-semibold text-forest-700 text-xs uppercase tracking-wider">Grade A</th>
+                <th class="px-4 py-3 text-center font-semibold text-terracotta-600 text-xs uppercase tracking-wider">Grade B</th>
+                <th class="px-4 py-3 text-center font-semibold text-bark/60 text-xs uppercase tracking-wider">Avg Score /50</th>
+                <th class="px-4 py-3 text-center font-semibold text-bark/60 text-xs uppercase tracking-wider">School Grade</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <% [
+                { subject: 'English Language',  a: 13, b: 1, avg: 49.79, grade: 'A' },
+                { subject: 'Kiswahili',          a: 13, b: 1, avg: 46.00, grade: 'A' },
+                { subject: 'Science',            a: 14, b: 0, avg: 47.36, grade: 'A' },
+                { subject: 'Civics',             a: 13, b: 1, avg: 44.43, grade: 'A' },
+                { subject: 'Social Studies',     a: 11, b: 3, avg: 43.43, grade: 'A' },
+                { subject: 'Mathematics',        a: 10, b: 4, avg: 40.36, grade: 'B' },
+              ].forEach((row, i) => { %>
+              <tr class="hover:bg-cream/50 transition-colors <%= i % 2 === 0 ? '' : 'bg-gray-50/30' %>">
+                <td class="px-6 py-3.5 font-medium text-bark"><%= row.subject %></td>
+                <td class="px-4 py-3.5 text-center">
+                  <span class="inline-block min-w-[36px] px-2 py-0.5 rounded-md bg-forest-100 text-forest-700 font-bold text-xs"><%= row.a %></span>
+                </td>
+                <td class="px-4 py-3.5 text-center">
+                  <span class="inline-block min-w-[36px] px-2 py-0.5 rounded-md <%= row.b > 0 ? 'bg-terracotta-100 text-terracotta-700' : 'bg-gray-50 text-gray-400' %> font-bold text-xs"><%= row.b %></span>
+                </td>
+                <td class="px-4 py-3.5 text-center">
+                  <div class="flex items-center justify-center gap-2">
+                    <div class="w-20 h-1.5 rounded-full bg-gray-200 overflow-hidden">
+                      <div class="h-full rounded-full bg-forest-500" style="width:<%= (row.avg/50*100).toFixed(0) %>%"></div>
+                    </div>
+                    <span class="font-semibold text-bark text-xs"><%= row.avg %></span>
+                  </div>
+                </td>
+                <td class="px-4 py-3.5 text-center">
+                  <span class="inline-block px-3 py-1 rounded-full text-xs font-bold <%= row.grade === 'A' ? 'bg-forest-100 text-forest-700' : 'bg-terracotta-100 text-terracotta-700' %>"><%= row.grade %></span>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-6 py-3 bg-forest-50 border-t border-forest-100 flex items-center gap-2">
+          <svg class="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <span class="text-forest-700 text-xs font-semibold">All 14 candidates (6 girls, 8 boys) achieved Grade A overall. Source: NECTA 2024</span>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="card reveal overflow-hidden p-0">
+        <div class="bg-bark px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-white mb-1">PSLE 2023</h3>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">271.74 / 300 — Grade A (Excellent)</span></p>
+          </div>
+          <div class="flex gap-6 text-right">
+            <div>
+              <div class="text-3xl font-display font-bold text-gold-400">22/23</div>
+              <div class="text-white/50 text-xs">Grade A / Sat</div>
+            </div>
+            <div>
+              <div class="text-3xl font-display font-bold text-green-400">100%</div>
+              <div class="text-white/50 text-xs">Pass Rate</div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 py-6">
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
+            <% [
+              { grade: 'A', count: 22, label: 'Excellent', bg: 'bg-forest-100', text: 'text-forest-700', bar: 'bg-forest-500', pct: 95.7 },
+              { grade: 'B', count: 1,  label: 'Very Good', bg: 'bg-terracotta-100', text: 'text-terracotta-700', bar: 'bg-terracotta-500', pct: 4.3 },
+              { grade: 'C', count: 0,  label: 'Good',      bg: 'bg-gold-100', text: 'text-gold-700', bar: 'bg-gold-500', pct: 0 },
+              { grade: 'D', count: 0,  label: 'Satisfactory', bg: 'bg-gray-100', text: 'text-gray-500', bar: 'bg-gray-400', pct: 0 },
+              { grade: 'E', count: 0,  label: 'Fail',      bg: 'bg-red-100', text: 'text-red-500', bar: 'bg-red-400', pct: 0 },
+            ].forEach(g => { %>
+            <div class="<%= g.bg %> rounded-xl p-4 text-center">
+              <div class="font-display text-3xl font-bold <%= g.text %> mb-1"><%= g.count %></div>
+              <div class="text-xs font-bold <%= g.text %> mb-1">Grade <%= g.grade %></div>
+              <div class="text-xs text-bark/50"><%= g.label %></div>
+              <div class="w-full h-1 rounded-full bg-white/50 mt-2">
+                <div class="h-full rounded-full <%= g.bar %>" style="width:<%= g.pct %>%"></div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <div class="flex flex-wrap gap-4 text-sm text-bark/70">
+            <span>👧 Girls Grade A: <strong class="text-bark">12</strong></span>
+            <span>👦 Boys Grade A: <strong class="text-bark">10</strong></span>
+            <span>📊 Total sat: <strong class="text-bark">23</strong></span>
+          </div>
+        </div>
+        <div class="px-6 py-3 bg-forest-50 border-t border-forest-100 flex items-center gap-2">
+          <svg class="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <span class="text-forest-700 text-xs font-semibold">22 Grade A, 1 Grade B — all candidates passed. Source: NECTA 2023</span>
+        </div>
+      </div>
+
+      <!-- 2022 -->
+      <div class="card reveal overflow-hidden p-0">
+        <div class="bg-forest-700 px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full">🏆 BEST SCHOOL AWARD</span>
+              <h3 class="font-display text-2xl font-bold text-white">PSLE 2022</h3>
+            </div>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">255.33 / 300 — Grade A (Excellent)</span></p>
+          </div>
+          <div class="flex gap-6 text-right">
+            <div>
+              <div class="text-3xl font-display font-bold text-gold-400">3/3</div>
+              <div class="text-white/50 text-xs">Candidates Passed</div>
+            </div>
+            <div>
+              <div class="text-3xl font-display font-bold text-green-400">100%</div>
+              <div class="text-white/50 text-xs">Pass Rate</div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 py-6">
+          <div class="grid grid-cols-3 gap-4 max-w-sm">
+            <div class="bg-forest-100 rounded-xl p-4 text-center">
+              <div class="font-display text-3xl font-bold text-forest-700 mb-1">2</div>
+              <div class="text-xs font-bold text-forest-700">Grade A</div>
+              <div class="text-xs text-bark/50">Excellent</div>
+            </div>
+            <div class="bg-terracotta-100 rounded-xl p-4 text-center">
+              <div class="font-display text-3xl font-bold text-terracotta-700 mb-1">1</div>
+              <div class="text-xs font-bold text-terracotta-700">Grade B</div>
+              <div class="text-xs text-bark/50">Very Good</div>
+            </div>
+            <div class="bg-gray-100 rounded-xl p-4 text-center">
+              <div class="font-display text-3xl font-bold text-gray-400 mb-1">0</div>
+              <div class="text-xs font-bold text-gray-400">Grade C–E</div>
+              <div class="text-xs text-bark/50">None</div>
+            </div>
+          </div>
+          <p class="text-bark/60 text-sm mt-5 italic">Awarded <strong class="text-bark not-italic">Best Primary School in Ngorongoro District</strong> for PSLE 2022 results by the Ngorongoro District Council.</p>
+        </div>
+        <div class="px-6 py-3 bg-forest-50 border-t border-forest-100 flex items-center gap-2">
+          <svg class="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <span class="text-forest-700 text-xs font-semibold">All 3 candidates passed. Source: NECTA 2022</span>
+        </div>
+      </div>
+
+    </div><!-- /space-y-8 -->
+
+    <!-- NECTA verification links -->
+    <div class="mt-10 card reveal bg-bark/5 border border-bark/10">
+      <h4 class="font-display font-bold text-bark mb-4 flex items-center gap-2">
+        <svg class="w-5 h-5 text-terracotta-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 0 0-5.656 0l-4 4a4 4 0 1 0 5.656 5.656l1.102-1.101m-.758-4.899a4 4 0 0 0 5.656 0l4-4a4 4 0 0 0-5.656-5.656l-1.1 1.1"/></svg>
+        Verify on NECTA Official Website
+      </h4>
+      <div class="flex flex-wrap gap-3">
+        <% [2022, 2023, 2024, 2025].forEach(yr => { %>
+        <a href="https://onlinesys.necta.go.tz/results/<%= yr %>/psle/results/shl_ps0107080.htm"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-terracotta-200 text-terracotta-600 text-sm font-semibold hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-200">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          PSLE <%= yr %>
+        </a>
+        <% }) %>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-bark relative overflow-hidden">
+  <div class="absolute inset-0 hero-pattern opacity-10"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-4 text-center reveal">
+    <h2 class="font-display text-3xl font-bold text-white mb-4">Join a School of Excellence</h2>
+    <p class="text-white/70 mb-8">Our results speak for themselves. Give your child the best foundation for their future.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/admissions" class="btn-gold">Apply for Admission</a>
+      <a href="/contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

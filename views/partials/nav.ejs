@@ -1,44 +1,108 @@
+<!-- Mobile backdrop -->
+<div id="menu-backdrop" class="fixed inset-0 z-40 bg-bark/50 backdrop-blur-sm hidden lg:hidden"></div>
+
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
 
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group">
-        <img src="/logo.png" alt="Butemine School Logo" class="h-12 w-12 object-contain rounded-full bg-white/10 p-1 group-hover:scale-105 transition-transform duration-300" />
+      <a href="/" class="flex items-center gap-3 group shrink-0">
+        <div class="relative logo-pulse">
+          <img src="/logo.png" alt="Butemine School" class="h-11 w-11 object-contain rounded-full bg-white/10 p-1 group-hover:scale-105 transition-transform duration-300" />
+        </div>
         <div>
           <div class="nav-logo-text font-display font-bold text-base text-white leading-tight group-hover:text-gold-300 transition-colors duration-300">Butemine School</div>
-          <div class="text-[10px] text-gold-400 tracking-widest uppercase leading-tight">English Medium · Tanzania</div>
+          <div class="text-[10px] text-gold-400 tracking-widest uppercase leading-tight">Primary School · Tanzania</div>
         </div>
       </a>
 
       <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center gap-7">
-        <a href="/" class="nav-link text-white <%= page === 'home' ? 'after:w-full text-gold-300' : '' %>">Home</a>
-        <a href="/about" class="nav-link text-white <%= page === 'about' ? 'after:w-full text-gold-300' : '' %>">About Us</a>
-        <a href="/admissions" class="nav-link text-white <%= page === 'admissions' ? 'after:w-full text-gold-300' : '' %>">Admissions</a>
-        <a href="/schools" class="nav-link text-white <%= page === 'schools' ? 'after:w-full text-gold-300' : '' %>">Our Schools</a>
-        <a href="/gallery" class="nav-link text-white <%= page === 'gallery' ? 'after:w-full text-gold-300' : '' %>">Gallery</a>
-        <a href="/contact" class="btn-primary text-sm py-2 px-6">Contact Us</a>
+        <a href="/" class="nav-link text-white <%= page === 'home' ? 'after:!w-full !text-gold-300' : '' %>">Home</a>
+        <a href="/about" class="nav-link text-white <%= page === 'about' ? 'after:!w-full !text-gold-300' : '' %>">About Us</a>
+        <a href="/admissions" class="nav-link text-white <%= page === 'admissions' ? 'after:!w-full !text-gold-300' : '' %>">Admissions</a>
+        <a href="/schools" class="nav-link text-white <%= page === 'schools' ? 'after:!w-full !text-gold-300' : '' %>">Our Schools</a>
+        <a href="/gallery" class="nav-link text-white <%= page === 'gallery' ? 'after:!w-full !text-gold-300' : '' %>">Gallery</a>
+
+        <!-- More Dropdown (click-controlled) -->
+        <div class="relative" id="more-dropdown-wrap">
+          <button id="more-btn" aria-expanded="false" aria-haspopup="true"
+                  class="nav-link text-white flex items-center gap-1 <%= ['news','results'].includes(page) ? 'after:!w-full !text-gold-300' : '' %>">
+            More
+            <svg id="more-chevron" class="w-3.5 h-3.5 opacity-60 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div id="more-menu"
+               class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-bark/97 backdrop-blur-xl border border-white/10 rounded-2xl py-2 shadow-2xl hidden">
+            <a href="/news" class="flex items-center gap-3 px-4 py-3 text-sm text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors rounded-xl mx-1 <%= page === 'news' ? 'text-gold-400 bg-white/5' : '' %>">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              News & Updates
+            </a>
+            <a href="/results" class="flex items-center gap-3 px-4 py-3 text-sm text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors rounded-xl mx-1 <%= page === 'results' ? 'text-gold-400 bg-white/5' : '' %>">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Academic Results
+            </a>
+          </div>
+        </div>
+
+        <div class="w-px h-5 bg-white/20 mx-1"></div>
+        <!-- Dark / Light toggle -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <!-- Moon: visible in light mode -->
+          <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <!-- Sun: visible in dark mode -->
+          <svg class="icon-sun w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <a href="/donate" class="<%= page === 'donate' ? 'btn-gold' : 'btn-donate-nav' %> text-sm py-2 px-5 flex items-center gap-2">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Support Us
+        </a>
+        <a href="/contact" class="btn-primary text-sm py-2.5 px-6">Contact Us</a>
       </div>
 
-      <!-- Mobile Hamburger -->
-      <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2 group" aria-label="Toggle menu">
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-2"></span>
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <!-- Hamburger -->
+      <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false"
+              class="lg:hidden flex flex-col gap-[5px] p-2">
+        <span class="block w-6 h-0.5 bg-white rounded-full origin-center"></span>
+        <span class="block w-6 h-0.5 bg-white rounded-full origin-center"></span>
+        <span class="block w-6 h-0.5 bg-white rounded-full origin-center"></span>
       </button>
     </div>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-bark/95 backdrop-blur-md border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-4">
-      <a href="/" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'home' ? 'text-gold-400' : '' %>">Home</a>
-      <a href="/about" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'about' ? 'text-gold-400' : '' %>">About Us</a>
-      <a href="/admissions" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'admissions' ? 'text-gold-400' : '' %>">Admissions</a>
-      <a href="/schools" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'schools' ? 'text-gold-400' : '' %>">Our Schools</a>
-      <a href="/gallery" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'gallery' ? 'text-gold-400' : '' %>">Gallery</a>
-      <a href="/contact" class="btn-primary text-center mt-2">Contact Us</a>
+  <div id="mobile-menu" class="hidden lg:hidden -translate-y-4 opacity-0 bg-bark/97 backdrop-blur-xl border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-7 flex flex-col gap-1">
+      <% [['/', 'Home', 'home'], ['/about','About Us','about'], ['/admissions','Admissions','admissions'],
+          ['/schools','Our Schools','schools'], ['/gallery','Gallery','gallery'],
+          ['/news','News & Updates','news'], ['/results','Matokeo','results']].forEach(([href, label, key]) => { %>
+      <a href="<%= href %>"
+         class="text-white font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between <%= page === key ? 'bg-white/10 text-gold-400' : '' %>">
+        <%= label %>
+        <svg class="w-4 h-4 opacity-40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+      <% }) %>
+      <div class="border-t border-white/10 pt-3 mt-2 flex flex-col gap-3">
+        <a href="/donate" class="flex items-center justify-center gap-2 font-semibold py-3 px-4 rounded-xl border-2 border-gold-400 text-gold-400 hover:bg-gold-400/10 transition-colors <%= page === 'donate' ? 'bg-gold-400/15' : '' %>">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Support Us
+        </a>
+        <a href="/contact" class="btn-primary text-center">Contact Us</a>
+      </div>
+      <div class="flex justify-center gap-4 mt-5 pt-5 border-t border-white/10">
+        <a href="https://www.facebook.com/share/1CfGeEVe3b/" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold-400 transition-colors text-xs">Facebook</a>
+        <span class="text-white/20">·</span>
+        <a href="https://www.instagram.com/butemineschool" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold-400 transition-colors text-xs">Instagram</a>
+        <span class="text-white/20">·</span>
+        <a href="tel:+255788384699" class="text-white/50 hover:text-gold-400 transition-colors text-xs">+255 788 384 699</a>
+      </div>
     </div>
   </div>
 </nav>

@@ -19,7 +19,10 @@ app.get('/about',      (_req, res) => res.render('about',      { page: 'about' }
 app.get('/admissions', (_req, res) => res.render('admissions', { page: 'admissions' }));
 app.get('/schools',    (_req, res) => res.render('schools',    { page: 'schools' }));
 app.get('/gallery',    (_req, res) => res.render('gallery',    { page: 'gallery' }));
+app.get('/news',       (_req, res) => res.render('news',       { page: 'news' }));
+app.get('/results',    (_req, res) => res.render('results',    { page: 'results' }));
 app.get('/contact',    (_req, res) => res.render('contact',    { page: 'contact' }));
+app.get('/donate',     (_req, res) => res.render('donate',     { page: 'donate' }));
 
 app.use((_req, res) => res.status(404).render('404', { page: '' }));
 

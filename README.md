@@ -14,12 +14,12 @@ The school serves marginalized children — including orphans — providing qual
 
 ### School Centers
 
-| Center | Location | Students | Teachers | Staff |
-|--------|----------|----------|----------|-------|
-| Butemine Headquarters | Samunge Village | 147 (63 fee-exempt) | 10 | Guard, 2 cooks, gardener, secretary |
-| Daycare Center | Oldonyo Sambu Village (~21km from Samunge) | 25 | 2 | 1 cook |
-| Jema Branch | Jema Village (near Kenya border) | 37 | 3 | 1 cook |
-| **Total** | | **209 students** | **15** | |
+| Center | Location | Programs | Students | Teachers |
+|--------|----------|----------|----------|----------|
+| Butemine Headquarters | Samunge Village | Daycare + Nursery/Pre-school + Primary (Std 1–7) | 147 (63 fee-exempt) | 10 |
+| Sale Branch | Sale Division, Ngorongoro District | Daycare + Nursery + Pre-school | 25 | 2 |
+| Jema Branch | Jema Village (near Kenya border) | Daycare + Nursery + Pre-school | 37 | 3 |
+| **Total** | | | **209 students** | **15** |
 
 ---
 

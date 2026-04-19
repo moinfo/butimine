@@ -12,46 +12,52 @@
         </div>
         <div>
           <div class="nav-logo-text font-display font-bold text-base text-white leading-tight group-hover:text-gold-300 transition-colors duration-300">Butemine School</div>
-          <div class="text-[10px] text-gold-400 tracking-widest uppercase leading-tight">Primary School · Tanzania</div>
+          <div class="text-[10px] text-gold-400 tracking-widest uppercase leading-tight"><%= t.nav_tagline %></div>
         </div>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-7">
-        <a href="/" class="nav-link text-white <%= page === 'home' ? 'after:!w-full !text-gold-300' : '' %>">Home</a>
-        <a href="/about" class="nav-link text-white <%= page === 'about' ? 'after:!w-full !text-gold-300' : '' %>">About Us</a>
-        <a href="/admissions" class="nav-link text-white <%= page === 'admissions' ? 'after:!w-full !text-gold-300' : '' %>">Admissions</a>
-        <a href="/schools" class="nav-link text-white <%= page === 'schools' ? 'after:!w-full !text-gold-300' : '' %>">Our Schools</a>
-        <a href="/gallery" class="nav-link text-white <%= page === 'gallery' ? 'after:!w-full !text-gold-300' : '' %>">Gallery</a>
+      <div class="hidden lg:flex items-center gap-6">
+        <a href="/" class="nav-link text-white <%= page === 'home' ? 'after:!w-full !text-gold-300' : '' %>"><%= t.nav_home %></a>
+        <a href="/about" class="nav-link text-white <%= page === 'about' ? 'after:!w-full !text-gold-300' : '' %>"><%= t.nav_about %></a>
+        <a href="/admissions" class="nav-link text-white <%= page === 'admissions' ? 'after:!w-full !text-gold-300' : '' %>"><%= t.nav_admissions %></a>
+        <a href="/schools" class="nav-link text-white <%= page === 'schools' ? 'after:!w-full !text-gold-300' : '' %>"><%= t.nav_schools %></a>
+        <a href="/gallery" class="nav-link text-white <%= page === 'gallery' ? 'after:!w-full !text-gold-300' : '' %>"><%= t.nav_gallery %></a>
 
         <!-- More Dropdown (click-controlled) -->
         <div class="relative" id="more-dropdown-wrap">
           <button id="more-btn" aria-expanded="false" aria-haspopup="true"
                   class="nav-link text-white flex items-center gap-1 <%= ['news','results'].includes(page) ? 'after:!w-full !text-gold-300' : '' %>">
-            More
+            <%= t.nav_more %>
             <svg id="more-chevron" class="w-3.5 h-3.5 opacity-60 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div id="more-menu"
-               class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-bark/97 backdrop-blur-xl border border-white/10 rounded-2xl py-2 shadow-2xl hidden">
+               class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-bark/97 backdrop-blur-xl border border-white/10 rounded-2xl py-2 shadow-2xl hidden">
             <a href="/news" class="flex items-center gap-3 px-4 py-3 text-sm text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors rounded-xl mx-1 <%= page === 'news' ? 'text-gold-400 bg-white/5' : '' %>">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              News & Updates
+              <%= t.nav_news %>
             </a>
             <a href="/results" class="flex items-center gap-3 px-4 py-3 text-sm text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors rounded-xl mx-1 <%= page === 'results' ? 'text-gold-400 bg-white/5' : '' %>">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              Academic Results
+              <%= t.nav_results %>
             </a>
           </div>
         </div>
 
         <div class="w-px h-5 bg-white/20 mx-1"></div>
+
+        <!-- Language toggle -->
+        <a href="/lang/<%= t.langOtherCode %>"
+           class="theme-toggle text-[11px] font-bold tracking-wider"
+           title="Switch to <%= t.langOther %>">
+          <%= t.langOtherCode === 'sw' ? 'SW' : 'EN' %>
+        </a>
+
         <!-- Dark / Light toggle -->
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-          <!-- Moon: visible in light mode -->
           <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
-          <!-- Sun: visible in dark mode -->
           <svg class="icon-sun w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -60,11 +66,12 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
         </button>
+
         <a href="/donate" class="<%= page === 'donate' ? 'btn-gold' : 'btn-donate-nav' %> text-sm py-2 px-5 flex items-center gap-2">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Support Us
+          <%= t.nav_support %>
         </a>
-        <a href="/contact" class="btn-primary text-sm py-2.5 px-6">Contact Us</a>
+        <a href="/contact" class="btn-primary text-sm py-2.5 px-6"><%= t.nav_contact %></a>
       </div>
 
       <!-- Hamburger -->
@@ -80,9 +87,15 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden lg:hidden -translate-y-4 opacity-0 bg-bark/97 backdrop-blur-xl border-t border-white/10">
     <div class="max-w-7xl mx-auto px-6 py-7 flex flex-col gap-1">
-      <% [['/', 'Home', 'home'], ['/about','About Us','about'], ['/admissions','Admissions','admissions'],
-          ['/schools','Our Schools','schools'], ['/gallery','Gallery','gallery'],
-          ['/news','News & Updates','news'], ['/results','Matokeo','results']].forEach(([href, label, key]) => { %>
+      <% [
+        ['/', t.nav_home, 'home'],
+        ['/about', t.nav_about, 'about'],
+        ['/admissions', t.nav_admissions, 'admissions'],
+        ['/schools', t.nav_schools, 'schools'],
+        ['/gallery', t.nav_gallery, 'gallery'],
+        ['/news', t.nav_news, 'news'],
+        ['/results', t.nav_results, 'results']
+      ].forEach(([href, label, key]) => { %>
       <a href="<%= href %>"
          class="text-white font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between <%= page === key ? 'bg-white/10 text-gold-400' : '' %>">
         <%= label %>
@@ -90,11 +103,16 @@
       </a>
       <% }) %>
       <div class="border-t border-white/10 pt-3 mt-2 flex flex-col gap-3">
+        <!-- Language switch mobile -->
+        <a href="/lang/<%= t.langOtherCode %>"
+           class="flex items-center justify-center gap-2 font-semibold py-2.5 px-4 rounded-xl border border-white/20 text-white/70 hover:text-gold-400 hover:border-gold-400 transition-colors text-sm">
+          🌐 <%= t.langOther %>
+        </a>
         <a href="/donate" class="flex items-center justify-center gap-2 font-semibold py-3 px-4 rounded-xl border-2 border-gold-400 text-gold-400 hover:bg-gold-400/10 transition-colors <%= page === 'donate' ? 'bg-gold-400/15' : '' %>">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Support Us
+          <%= t.nav_support %>
         </a>
-        <a href="/contact" class="btn-primary text-center">Contact Us</a>
+        <a href="/contact" class="btn-primary text-center"><%= t.nav_contact %></a>
       </div>
       <div class="flex justify-center gap-4 mt-5 pt-5 border-t border-white/10">
         <a href="https://www.facebook.com/share/1CfGeEVe3b/" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold-400 transition-colors text-xs">Facebook</a>

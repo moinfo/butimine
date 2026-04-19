@@ -1,5 +1,6 @@
-const express = require('express');
-const path    = require('path');
+const express      = require('express');
+const path         = require('path');
+const cookieParser = require('cookie-parser');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -9,6 +10,22 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(cookieParser());
+
+// Language middleware — reads cookie, passes translations to every view
+app.use((req, res, next) => {
+  const lang = req.cookies.lang === 'sw' ? 'sw' : 'en';
+  res.locals.t    = require(`./locales/${lang}.js`);
+  res.locals.lang = lang;
+  next();
+});
+
+// Language switch endpoint
+app.get('/lang/:code', (req, res) => {
+  const code = req.params.code === 'sw' ? 'sw' : 'en';
+  res.cookie('lang', code, { maxAge: 365 * 24 * 60 * 60 * 1000, httpOnly: false });
+  res.redirect(req.headers.referer || '/');
+});
 
 app.get('/logo.png', (_req, res) => {
   res.sendFile(path.join(__dirname, 'Butemine Logo.png'));

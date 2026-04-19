@@ -1,0 +1,44 @@
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <img src="/logo.png" alt="Butemine School Logo" class="h-12 w-12 object-contain rounded-full bg-white/10 p-1 group-hover:scale-105 transition-transform duration-300" />
+        <div>
+          <div class="nav-logo-text font-display font-bold text-base text-white leading-tight group-hover:text-gold-300 transition-colors duration-300">Butemine School</div>
+          <div class="text-[10px] text-gold-400 tracking-widest uppercase leading-tight">English Medium · Tanzania</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-7">
+        <a href="/" class="nav-link text-white <%= page === 'home' ? 'after:w-full text-gold-300' : '' %>">Home</a>
+        <a href="/about" class="nav-link text-white <%= page === 'about' ? 'after:w-full text-gold-300' : '' %>">About Us</a>
+        <a href="/admissions" class="nav-link text-white <%= page === 'admissions' ? 'after:w-full text-gold-300' : '' %>">Admissions</a>
+        <a href="/schools" class="nav-link text-white <%= page === 'schools' ? 'after:w-full text-gold-300' : '' %>">Our Schools</a>
+        <a href="/gallery" class="nav-link text-white <%= page === 'gallery' ? 'after:w-full text-gold-300' : '' %>">Gallery</a>
+        <a href="/contact" class="btn-primary text-sm py-2 px-6">Contact Us</a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2 group" aria-label="Toggle menu">
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-bark/95 backdrop-blur-md border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-4">
+      <a href="/" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'home' ? 'text-gold-400' : '' %>">Home</a>
+      <a href="/about" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'about' ? 'text-gold-400' : '' %>">About Us</a>
+      <a href="/admissions" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'admissions' ? 'text-gold-400' : '' %>">Admissions</a>
+      <a href="/schools" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'schools' ? 'text-gold-400' : '' %>">Our Schools</a>
+      <a href="/gallery" class="text-white font-medium hover:text-gold-400 transition-colors py-2 border-b border-white/10 <%= page === 'gallery' ? 'text-gold-400' : '' %>">Gallery</a>
+      <a href="/contact" class="btn-primary text-center mt-2">Contact Us</a>
+    </div>
+  </div>
+</nav>

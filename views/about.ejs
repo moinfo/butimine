@@ -1,0 +1,153 @@
+<%- include('partials/head', { title: 'About Us' }) %>
+<body class="font-body bg-cream overflow-x-hidden">
+
+<%- include('partials/nav') %>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="absolute inset-0 hero-pattern opacity-20"></div>
+  <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-gold-500/10 blur-3xl"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    <span class="section-label text-gold-400">Who We Are</span>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mt-2 mb-4">About <em class="text-gold-400">Butemine</em></h1>
+    <p class="text-white/70 text-lg max-w-2xl mx-auto">A community school founded on the belief that every child deserves quality education, regardless of circumstance.</p>
+  </div>
+</section>
+
+<!-- Vision & Mission -->
+<section class="py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div class="card reveal border-l-4 border-l-terracotta-500">
+        <div class="w-12 h-12 bg-terracotta-50 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-terracotta-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h2 class="font-display text-2xl font-bold text-bark mb-4">Our Vision</h2>
+        <p class="text-bark/75 leading-relaxed">Provide quality education to youth so as to raise a new generation equipped with leadership skills, national pride, innovation, creativity, discipline, character, values and dignity so that they become agents of change for a better society.</p>
+      </div>
+
+      <div class="card reveal border-l-4 border-l-gold-500">
+        <div class="w-12 h-12 bg-gold-50 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h2 class="font-display text-2xl font-bold text-bark mb-4">Our Mission</h2>
+        <p class="text-bark/75 leading-relaxed">Our mission is to provide better education that can bring up creative minds and well-mannered citizens with life-long passion for learning, a strong sense of moral responsibility and welcoming of diversity.</p>
+      </div>
+    </div>
+
+    <!-- Our Story -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+      <div class="reveal">
+        <span class="section-label">The Beginning</span>
+        <h2 class="section-title mb-5">The Story of<br /><em class="text-terracotta-500">Butemine</em></h2>
+        <div class="gold-divider mb-6"></div>
+        <p class="text-bark/80 leading-relaxed mb-4">
+          In 2013, <strong>John Nedura</strong> and his spouse <strong>Grace Ginduri</strong> made a defining choice: they donated their family's inherited livestock — their greatest wealth — to establish a school for the children of Samunge Village.
+        </p>
+        <p class="text-bark/80 leading-relaxed mb-4">
+          The school was named <em class="font-semibold text-terracotta-500">Butemine</em> to inspire the Sonjo (Batemi) people — with all their sub-tribes and social variations — to unite under one vision: equal access to quality education for every child.
+        </p>
+        <p class="text-bark/80 leading-relaxed mb-6">
+          Their motto has never wavered: <em>"No one should lag behind. There should be no discrimination."</em> Special emphasis is placed on girls' education, orphaned children, and those unable to afford school fees — 63 students currently attend free of charge.
+        </p>
+        <blockquote class="border-l-4 border-gold-500 pl-5 mb-8 bg-gold-50 py-4 pr-4 rounded-r-xl">
+          <p class="font-display text-lg italic text-bark/90">"Education for self-reliance, in the spirit of respecting others in fear of God."</p>
+          <footer class="text-sm text-gold-600 mt-2 font-semibold">— School Founders' Philosophy</footer>
+        </blockquote>
+      </div>
+
+      <div class="reveal">
+        <div class="space-y-6">
+          <!-- Timeline -->
+          <% [
+            ['2013', 'School Founded', 'John Nedura and Grace Ginduri establish Butemine School at Samunge, donating their livestock to fund the initiative.'],
+            ['2013+', 'Daycare Centre Opens', 'A Daycare centre is established at Oldonyo Sambu village, ~21km from Samunge, bringing early education closer to families.'],
+            ['Growth', 'Jema Branch Established', 'A third school centre opens at Jema village, near the Kenya border, extending reach to 37 additional students.'],
+            ['Today', '209 Students Across 3 Centres', 'The school operates with 15+ staff serving 209 students, with 63 receiving free education regardless of their ability to pay.'],
+          ].forEach(([year, title, desc]) => { %>
+          <div class="flex gap-5">
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-terracotta-500 text-white text-xs font-bold flex items-center justify-center shrink-0"><%= year.length > 4 ? '•' : year %></div>
+              <div class="w-0.5 h-full bg-terracotta-100 mt-2"></div>
+            </div>
+            <div class="pb-6">
+              <p class="text-xs text-gold-600 font-semibold uppercase tracking-widest mb-1"><%= year %></p>
+              <h4 class="font-display font-bold text-bark text-lg mb-1"><%= title %></h4>
+              <p class="text-bark/70 text-sm leading-relaxed"><%= desc %></p>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Batemi Tribe & Culture -->
+    <div class="rounded-3xl overflow-hidden reveal" style="background: linear-gradient(135deg, #2E5C28 0%, #1E3A19 100%);">
+      <div class="p-10 md:p-14">
+        <div class="max-w-4xl">
+          <span class="section-label text-gold-400">Heritage & Identity</span>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-5">The Batemi <em class="text-gold-400">(Sonjo) People</em></h2>
+          <div class="gold-divider mb-6"></div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white/80 text-sm leading-relaxed">
+            <div>
+              <h4 class="font-semibold text-gold-400 mb-3 font-display text-base">Who They Are</h4>
+              <p>The Batemi (Sonjo) people are the indigenous community of the Samunge area in Ngorongoro District. They hold a strong ethnic identity and cultural pride, maintaining traditions while adapting to modern Tanzania.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gold-400 mb-3 font-display text-base">Economy & Land</h4>
+              <p>The Batemi are agro-pastoralists — farming and herding livestock within the Ngorongoro-Serengeti ecosystem. Their land borders some of Africa's most celebrated wildlife conservation areas.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gold-400 mb-3 font-display text-base">The Butemine Name</h4>
+              <p>The word "Butemine" was chosen to inspire unity across the Sonjo sub-tribes — a rallying call that transcends social and geographical differences in pursuit of education and shared progress.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="py-16 bg-terracotta-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">What Drives Us</span>
+      <h2 class="section-title">Our Core <em class="text-terracotta-500">Values</em></h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <% [
+        ['Inclusivity', 'No child is turned away. Education is a right, not a privilege.'],
+        ['Excellence', 'Striving for the highest academic standards within every classroom.'],
+        ['Heritage', 'Respecting and preserving Batemi culture while embracing modernity.'],
+        ['Faith', 'Nurturing moral responsibility, dignity, and respect for others.'],
+      ].forEach(([val, desc]) => { %>
+      <div class="text-center p-6 reveal">
+        <div class="w-12 h-12 bg-terracotta-500 rounded-2xl mx-auto mb-4"></div>
+        <h4 class="font-display font-bold text-bark mb-2"><%= val %></h4>
+        <p class="text-bark/60 text-sm leading-relaxed"><%= desc %></p>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 bg-cream">
+  <div class="max-w-3xl mx-auto px-4 text-center reveal">
+    <h2 class="section-title mb-5">Ready to Join<br /><em class="text-terracotta-500">Our Community?</em></h2>
+    <p class="text-bark/70 mb-8 text-lg">Learn about admissions, visit our campuses, or reach out to speak with our team.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/admissions" class="btn-primary">Apply for Admission</a>
+      <a href="/contact" class="btn-outline-dark">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

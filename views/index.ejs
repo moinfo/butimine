@@ -1,0 +1,263 @@
+<%- include('partials/head', { title: 'Home' }) %>
+<body class="font-body bg-cream overflow-x-hidden">
+
+<%- include('partials/nav') %>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden"
+         style="background: linear-gradient(135deg, #1A0E08 0%, #2C1810 35%, #8C3A1E 70%, #C9920A 100%);">
+
+  <!-- Texture overlay -->
+  <div class="absolute inset-0 hero-pattern opacity-40"></div>
+
+  <!-- Decorative circle top-right -->
+  <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-gold-500/10 blur-3xl"></div>
+  <div class="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-terracotta-500/20 blur-3xl"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white pt-20">
+    <div class="animate-fade-in-up">
+      <img src="/logo.png" alt="Butemine School" class="h-24 w-24 mx-auto mb-6 object-contain bg-white/10 rounded-full p-2" />
+    </div>
+    <p class="animate-fade-in-up delay-100 section-label text-gold-400 !text-sm !mb-4">Samunge, Tanzania · Est. 2013</p>
+    <h1 class="animate-fade-in-up delay-200 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-5">
+      Butemine<br />
+      <span class="italic text-gold-400">English Medium</span><br />
+      School
+    </h1>
+    <p class="animate-fade-in-up delay-300 text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+      Raising agents of change in the heart of Tanzania's Ngorongoro-Serengeti ecosystem — where education meets heritage.
+    </p>
+    <div class="animate-fade-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/about" class="btn-primary text-base">Discover Our School</a>
+      <a href="/contact" class="btn-outline text-base">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+    <span class="text-white/50 text-xs uppercase tracking-widest">Scroll</span>
+    <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════ -->
+<section class="bg-bark py-10">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <% [
+        ['209', 'Students Enrolled'],
+        ['3', 'School Centres'],
+        ['2013', 'Year Founded'],
+        ['15+', 'Teaching Staff'],
+      ].forEach(([num, label]) => { %>
+      <div class="reveal">
+        <div class="font-display text-4xl font-bold text-gold-400 mb-1"><%= num %></div>
+        <div class="text-white/60 text-sm uppercase tracking-widest"><%= label %></div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════ -->
+<section class="py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Quality Education<br /><em class="text-terracotta-500">at Every Stage</em></h2>
+      <div class="gold-divider mx-auto mt-5"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <% [
+        {
+          icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+          title: 'Daycare Centre',
+          location: 'Oldonyo Sambu',
+          desc: 'A nurturing environment for our youngest learners. Our Daycare centre at Oldonyo Sambu village provides safe, caring supervision and early stimulation for 25 children.',
+          badge: 'Ages 0 – 3',
+        },
+        {
+          icon: `<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>`,
+          title: 'Nursery & Pre-school',
+          location: 'Samunge HQ',
+          desc: 'Building foundations for lifelong learning through play-based education, language development, and creative exploration in our welcoming Samunge headquarters.',
+          badge: 'Ages 3 – 6',
+        },
+        {
+          icon: `<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>`,
+          title: 'Primary School',
+          location: 'Samunge & Jema',
+          desc: 'Comprehensive Standard 1–7 education rooted in the Tanzania national curriculum. Our 147 HQ students and 37 Jema branch students receive quality, bilingual instruction.',
+          badge: 'Standard 1 – 7',
+        },
+      ].forEach((s, i) => { %>
+      <div class="card reveal" style="animation-delay: <%= i * 100 %>ms">
+        <div class="w-14 h-14 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-terracotta-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <%- s.icon %>
+          </svg>
+        </div>
+        <span class="inline-block bg-gold-100 text-gold-700 text-xs font-semibold px-3 py-1 rounded-full mb-3"><%= s.badge %></span>
+        <h3 class="font-display text-xl font-bold text-bark mb-1"><%= s.title %></h3>
+        <p class="text-gold-600 text-xs font-semibold uppercase tracking-wider mb-3"><%= s.location %></p>
+        <p class="text-bark/70 text-sm leading-relaxed"><%= s.desc %></p>
+        <a href="/schools" class="inline-flex items-center gap-1 text-terracotta-500 text-sm font-semibold mt-5 hover:gap-2 transition-all">
+          Learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT PREVIEW
+════════════════════════════════════════════ -->
+<section class="py-24" style="background: linear-gradient(160deg, #F3EDE2 0%, #FAF6EF 100%);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Image side -->
+      <div class="reveal relative">
+        <div class="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] bg-terracotta-100">
+          <img src="/images/File 1.jpg" alt="Butemine School students" class="w-full h-full object-cover" />
+        </div>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-6 -right-6 bg-terracotta-500 text-white rounded-2xl p-5 shadow-xl">
+          <div class="font-display text-3xl font-bold">2013</div>
+          <div class="text-xs text-white/80 uppercase tracking-widest">Founded</div>
+        </div>
+        <!-- Decorative border -->
+        <div class="absolute -top-4 -left-4 w-full h-full rounded-3xl border-2 border-gold-400/40 -z-10"></div>
+      </div>
+
+      <!-- Text side -->
+      <div class="reveal">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title mb-5">Born From the<br /><em class="text-terracotta-500">Spirit of Unity</em></h2>
+        <div class="gold-divider mb-6"></div>
+        <p class="text-bark/80 leading-relaxed mb-4">
+          In 2013, John Nedura and his spouse Grace Ginduri made a remarkable decision — they donated their family's inherited livestock to establish a school for their community. They named it <strong class="text-terracotta-500">Butemine</strong>, a word embodying the spirit of uniting the Sonjo (Batemi) sub-tribes under one purpose.
+        </p>
+        <p class="text-bark/80 leading-relaxed mb-8">
+          Their core belief: <em>"No one should lag behind, and there should be no discrimination."</em> Today, the school serves 209 students across three centres, with special focus on girls' education, orphans, and marginalized community members.
+        </p>
+        <blockquote class="border-l-4 border-gold-500 pl-5 mb-8">
+          <p class="font-display text-lg italic text-bark/90">"Let's join together to fight against ignorance and ensure every child achieves their right to education."</p>
+          <footer class="text-sm text-gold-600 mt-2 font-semibold">— John Nedura, Co-Founder</footer>
+        </blockquote>
+        <a href="/about" class="btn-outline-dark">Read Our Full Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GALLERY PREVIEW
+════════════════════════════════════════════ -->
+<section class="py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+      <div class="reveal">
+        <span class="section-label">From Our School</span>
+        <h2 class="section-title">Life at<br /><em class="text-terracotta-500">Butemine</em></h2>
+      </div>
+      <a href="/gallery" class="btn-outline-dark self-start md:self-auto reveal">View Full Gallery →</a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <% for (let i = 1; i <= 6; i++) { %>
+      <div class="gallery-item rounded-2xl overflow-hidden aspect-square bg-terracotta-100 reveal shadow-sm hover:shadow-xl transition-shadow duration-300">
+        <img src="/images/File <%= i %>.jpg" alt="Butemine School photo <%= i %>" class="w-full h-full object-cover" />
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LOCATION / TOURIST CALLOUT
+════════════════════════════════════════════ -->
+<section class="py-24 relative overflow-hidden"
+         style="background: linear-gradient(135deg, #2E5C28 0%, #1E3A19 100%);">
+  <div class="absolute inset-0 hero-pattern opacity-20"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <span class="section-label text-gold-400">Location</span>
+        <h2 class="section-title-light mb-5">In the Heart of<br /><em class="text-gold-400">Tanzania's Wonders</em></h2>
+        <div class="gold-divider mb-6"></div>
+        <p class="text-white/80 leading-relaxed mb-8">
+          Butemine School is located 396 km from Arusha City within the breathtaking Ngorongoro-Serengeti ecosystem — one of the world's most extraordinary natural landscapes, home to the Batemi people.
+        </p>
+        <a href="/contact" class="btn-gold">Find Us on the Map</a>
+      </div>
+
+      <div class="reveal">
+        <h3 class="font-display text-xl text-gold-400 mb-6 font-semibold">Nearby Attractions</h3>
+        <div class="grid grid-cols-2 gap-3">
+          <% ['Serengeti National Park', 'Ngorongoro Conservation Area', 'Mount Oldonyo Lengai', 'Lake Natron', 'Shimo la Mungu', 'Clency-Ololosokwan'].forEach(site => { %>
+          <div class="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-3 border border-white/10">
+            <span class="w-1.5 h-1.5 bg-gold-400 rounded-full shrink-0"></span>
+            <span class="text-white/90 text-sm"><%= site %></span>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     VOLUNTEERS
+════════════════════════════════════════════ -->
+<section class="py-20 bg-terracotta-500 relative overflow-hidden">
+  <div class="absolute inset-0 hero-pattern opacity-10"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center reveal">
+    <span class="section-label text-gold-300">Join Our Community</span>
+    <h2 class="section-title-light mb-5">We Welcome<br />Volunteers Worldwide</h2>
+    <p class="text-white/80 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+      Share your skills and make a lasting impact. We welcome international volunteers for teaching, community projects, and development initiatives in Samunge.
+    </p>
+    <a href="/contact" class="btn-outline text-base">Express Your Interest</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT CTA
+════════════════════════════════════════════ -->
+<section class="py-16 bg-cream">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-3xl shadow-sm border border-terracotta-100 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+      <div>
+        <h3 class="font-display text-2xl md:text-3xl font-bold text-bark mb-2">Have Questions?</h3>
+        <p class="text-bark/60">Call us or send a message — we're happy to help.</p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-4 text-sm text-bark/80">
+          <a href="tel:+255788384699" class="flex items-center gap-2 hover:text-terracotta-500 transition-colors">
+            <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.21 3.18 2 2 0 0 1 3.22 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            +255 788 384 699
+          </a>
+          <a href="tel:+255788384862" class="flex items-center gap-2 hover:text-terracotta-500 transition-colors">
+            <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.21 3.18 2 2 0 0 1 3.22 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            +255 788 384 862
+          </a>
+        </div>
+      </div>
+      <a href="/contact" class="btn-primary shrink-0">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

@@ -3,3 +3,5 @@ public/css/style.css
 .DS_Store
 *.log
 .env
+.playwright-mcp/
+mobile-*.png

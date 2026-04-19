@@ -81,7 +81,7 @@
 
   /* Testimonial */
   .testimonial-card {
-    @apply absolute inset-0 flex flex-col justify-center px-10 py-8
+    @apply absolute inset-0 flex flex-col justify-center px-4 sm:px-10 py-6 sm:py-8
            opacity-0 transition-opacity duration-700 pointer-events-none;
   }
   .testimonial-card.t-active {

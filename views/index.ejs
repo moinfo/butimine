@@ -120,9 +120,9 @@
 <!-- ═══════════════════════════════════════════
      SERVICES
 ════════════════════════════════════════════ -->
-<section class="py-24 bg-cream">
+<section class="py-16 md:py-24 bg-cream">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16 reveal">
+    <div class="text-center mb-12 md:mb-16 reveal">
       <span class="section-label"><%= t.home_offer_label %></span>
       <h2 class="section-title"><%= t.home_offer_title %><br /><em class="text-terracotta-500"><%= t.home_offer_title2 %></em></h2>
       <div class="gold-divider mx-auto mt-5"></div>
@@ -185,12 +185,12 @@
 <!-- ═══════════════════════════════════════════
      ABOUT PREVIEW
 ════════════════════════════════════════════ -->
-<section class="py-24 relative overflow-hidden" style="background: linear-gradient(160deg, #0D1B3E 0%, #070E1F 100%);">
+<section class="py-16 md:py-24 relative overflow-hidden" style="background: linear-gradient(160deg, #0D1B3E 0%, #070E1F 100%);">
   <div class="absolute inset-0 hero-pattern opacity-10"></div>
   <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/8 blur-3xl rounded-full -translate-y-1/4 translate-x-1/4"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
       <!-- Image -->
       <div class="reveal relative order-2 lg:order-1">
@@ -201,7 +201,7 @@
             <img src="/images/File 1.jpg" alt="Butemine School" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500" />
           </div>
           <!-- Floating info card -->
-          <div class="absolute -bottom-6 -right-4 bg-gold-500 text-bark rounded-2xl p-5 shadow-2xl">
+          <div class="absolute -bottom-4 right-0 sm:-bottom-6 sm:-right-4 bg-gold-500 text-bark rounded-2xl p-4 sm:p-5 shadow-2xl">
             <div class="font-display text-3xl font-bold leading-none">209</div>
             <div class="text-xs font-semibold uppercase tracking-wider mt-1 text-bark/80"><%= t.home_story_students %></div>
           </div>
@@ -236,9 +236,9 @@
 <!-- ═══════════════════════════════════════════
      GALLERY PREVIEW
 ════════════════════════════════════════════ -->
-<section class="pt-24 pb-16 bg-cream">
+<section class="pt-16 md:pt-24 pb-12 md:pb-16 bg-cream">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12 gap-4 md:gap-6">
       <div class="reveal">
         <span class="section-label"><%= t.home_gallery_label %></span>
         <h2 class="section-title"><%= t.home_gallery_title %> <em class="text-terracotta-500">Butemine</em></h2>
@@ -247,20 +247,20 @@
       <a href="/gallery" class="btn-outline-dark self-start reveal"><%= t.home_gallery_btn %></a>
     </div>
 
-    <!-- Featured 6-image grid -->
-    <div class="grid grid-cols-3 gap-3 md:gap-4">
-      <!-- Large image left -->
-      <div class="gallery-item col-span-1 row-span-2 rounded-2xl overflow-hidden bg-terracotta-100 shadow-sm hover:shadow-xl transition-shadow duration-400 reveal relative" style="min-height:300px">
+    <!-- Featured gallery grid: 2-col on mobile, 3-col with span on sm+ -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+      <!-- Large image: full-width on mobile, tall-left on sm+ -->
+      <div class="gallery-item col-span-2 sm:col-span-1 sm:row-span-2 rounded-2xl overflow-hidden bg-terracotta-100 shadow-sm hover:shadow-xl transition-shadow duration-400 reveal relative aspect-video sm:aspect-auto" style="min-height:0">
         <img src="/images/File 1.jpg" alt="Butemine School" class="w-full h-full object-cover absolute inset-0" />
-        <div class="overlay absolute inset-0 bg-bark/30 flex items-end p-5">
+        <div class="overlay absolute inset-0 bg-bark/30 flex items-end p-4 sm:p-5">
           <span class="text-white text-sm font-semibold">School Life</span>
         </div>
       </div>
-      <!-- Right side 2x2 grid -->
+      <!-- 4 square thumbnails -->
       <% for (let i = 2; i <= 5; i++) { %>
       <div class="gallery-item col-span-1 rounded-2xl overflow-hidden bg-terracotta-100 shadow-sm hover:shadow-xl transition-shadow duration-400 reveal relative aspect-square">
         <img src="/images/File <%= i %>.jpg" alt="Butemine photo" class="w-full h-full object-cover absolute inset-0" />
-        <div class="overlay absolute inset-0 bg-bark/20 flex items-end p-3">
+        <div class="overlay absolute inset-0 bg-bark/20 flex items-end p-2 sm:p-3">
           <span class="text-white text-xs font-medium">Photo <%= i %></span>
         </div>
       </div>
@@ -272,14 +272,14 @@
 <!-- ═══════════════════════════════════════════
      TESTIMONIALS
 ════════════════════════════════════════════ -->
-<section class="py-20 bg-cream border-y border-terracotta-100">
+<section class="py-14 md:py-20 bg-cream border-y border-terracotta-100">
   <div class="max-w-5xl mx-auto px-4">
-    <div class="text-center mb-12 reveal">
+    <div class="text-center mb-10 md:mb-12 reveal">
       <span class="section-label"><%= t.home_testimonials_label %></span>
       <h2 class="section-title"><%= t.home_testimonials_h %> <em class="text-terracotta-500"><%= t.home_testimonials_h_em %></em></h2>
     </div>
 
-    <div class="relative h-56 reveal" id="testimonial-wrap">
+    <div class="relative min-h-[300px] sm:min-h-[224px] reveal" id="testimonial-wrap">
       <% [
         { quote: t.home_testimonial1_quote, name: t.home_testimonial1_name, place: t.home_testimonial1_place },
         { quote: t.home_testimonial2_quote, name: t.home_testimonial2_name, place: t.home_testimonial2_place },
@@ -289,7 +289,7 @@
         <svg class="w-8 h-8 text-gold-500 mb-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
         </svg>
-        <p class="font-display text-xl md:text-2xl italic text-bark/90 leading-relaxed mb-6"><%= testimonial.quote %></p>
+        <p class="font-display text-lg md:text-2xl italic text-bark/90 leading-relaxed mb-5"><%= testimonial.quote %></p>
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full bg-terracotta-100 border-2 border-terracotta-200 flex items-center justify-center">
             <svg class="w-5 h-5 text-terracotta-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
@@ -308,13 +308,13 @@
 <!-- ═══════════════════════════════════════════
      LOCATION / TOURIST
 ════════════════════════════════════════════ -->
-<section class="py-24 relative overflow-hidden"
+<section class="py-16 md:py-24 relative overflow-hidden"
          style="background: linear-gradient(135deg, #1A7A3A 0%, #0C3B1C 100%);">
   <div class="absolute inset-0 hero-pattern opacity-15"></div>
   <div class="absolute right-0 top-0 w-96 h-96 bg-gold-500/10 blur-3xl rounded-full"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div class="reveal">
         <span class="section-label text-gold-400"><%= t.home_location_label %></span>
         <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-5">
@@ -328,9 +328,9 @@
 
       <div class="reveal">
         <h4 class="font-display text-lg text-gold-400 mb-5 font-semibold"><%= t.home_location_nearby %></h4>
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <% ['Serengeti National Park', 'Ngorongoro Conservation Area', 'Mount Oldonyo Lengai', 'Lake Natron', 'Shimo la Mungu', 'Clency-Ololosokwan'].forEach((site, i) => { %>
-          <div class="reveal group flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-gold-500/40 rounded-xl px-4 py-3.5 transition-all duration-300 cursor-default" style="transition-delay: <%= i*50 %>ms">
+          <div class="reveal group flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-gold-500/40 rounded-xl px-4 py-3 transition-all duration-300 cursor-default" style="transition-delay: <%= i*50 %>ms">
             <span class="w-2 h-2 bg-gold-400 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
             <span class="text-white/85 text-sm font-medium"><%= site %></span>
           </div>
@@ -350,13 +350,13 @@
 <!-- ═══════════════════════════════════════════
      VOLUNTEERS / COMMUNITY
 ════════════════════════════════════════════ -->
-<section class="py-24 bg-terracotta-500 relative overflow-hidden">
+<section class="py-16 md:py-24 bg-terracotta-500 relative overflow-hidden">
   <div class="absolute inset-0 hero-pattern opacity-10"></div>
   <div class="absolute -top-32 -left-32 w-80 h-80 bg-white/5 rounded-full"></div>
   <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-white/5 rounded-full"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div class="reveal">
         <span class="section-label text-gold-300"><%= t.home_impact_label %></span>
         <h2 class="section-title-light mb-5">
@@ -403,7 +403,7 @@
   <div class="max-w-5xl mx-auto px-4">
     <div class="bg-white rounded-3xl shadow-sm border border-terracotta-100 overflow-hidden reveal">
       <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="p-10 md:p-14">
+        <div class="p-6 sm:p-10 md:p-14">
           <h3 class="font-display text-2xl md:text-3xl font-bold text-bark mb-3"><%= t.home_contact_cta_title %></h3>
           <p class="text-bark/75 mb-6 leading-relaxed"><%= t.home_contact_cta_body %></p>
           <div class="space-y-3 mb-8 text-sm">

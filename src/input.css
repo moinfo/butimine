@@ -108,6 +108,8 @@
 #navbar.scrolled .nav-link  { color: #0D1B3E; }
 #navbar.scrolled .nav-link:hover { color: #4A90D9; }
 #navbar.scrolled .nav-logo-text { color: #0D1B3E; }
+#navbar.scrolled #menu-btn span { background-color: #0D1B3E; }
+.dark #navbar.scrolled #menu-btn span { background-color: #D4E3FF; }
 
 /* ─── Hero dot pattern ─────────────────────────────────────────── */
 .hero-pattern {

@@ -17,29 +17,92 @@
 <section class="py-24 bg-cream">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Filter bar (visual only) -->
+    <!-- Filter bar -->
     <div class="flex flex-wrap gap-3 justify-center mb-12 reveal">
-      <% [t.gallery_filter_all, t.gallery_filter_life, t.gallery_filter_events, t.gallery_filter_community, t.gallery_filter_campus].forEach((cat, i) => { %>
-      <button class="px-5 py-2 rounded-full text-sm font-semibold transition-all <%= i === 0 ? 'bg-terracotta-500 text-white' : 'bg-white border border-terracotta-200 text-bark/70 hover:border-terracotta-500 hover:text-terracotta-500' %>">
-        <%= cat %>
+      <%
+        const filters = [
+          { key: 'all',        label: t.gallery_filter_all },
+          { key: 'graduation', label: t.gallery_filter_graduation },
+          { key: 'sports',     label: t.gallery_filter_sports },
+          { key: 'talent',     label: t.gallery_filter_talent },
+          { key: 'outreach',   label: t.gallery_filter_outreach },
+          { key: 'campus',     label: t.gallery_filter_campus },
+          { key: 'awards',     label: t.gallery_filter_awards },
+        ];
+      %>
+      <% filters.forEach((f, i) => { %>
+      <button
+        data-filter="<%= f.key %>"
+        class="gallery-filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 <%= i === 0 ? 'bg-terracotta-500 text-white' : 'bg-white border border-terracotta-200 text-bark/70 hover:border-terracotta-500 hover:text-terracotta-500' %>">
+        <%= f.label %>
       </button>
       <% }) %>
     </div>
 
     <!-- Masonry-style grid -->
-    <div class="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
-      <% [1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17].forEach(i => { %>
-      <div class="gallery-item break-inside-avoid rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 bg-terracotta-100 reveal group cursor-pointer relative">
-        <img src="/images/File <%= i %>.jpg"
-             alt="Butemine School — Photo <%= i %>"
-             class="w-full h-auto block" />
-        <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/30 transition-all duration-400 flex items-center justify-center">
-          <svg class="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path d="M15 3h6m0 0v6m0-6L10 14M14 4H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h15a1 1 0 0 0 1-1v-9"/>
-          </svg>
+    <%
+      const photos = [
+        { file: 1,  cat: 'graduation' },
+        { file: 2,  cat: 'graduation' },
+        { file: 3,  cat: 'graduation' },
+        { file: 4,  cat: 'graduation' },
+        { file: 5,  cat: 'sports'     },
+        { file: 6,  cat: 'sports'     },
+        { file: 7,  cat: 'sports'     },
+        { file: 8,  cat: 'talent'     },
+        { file: 9,  cat: 'talent'     },
+        { file: 10, cat: 'talent'     },
+        { file: 11, cat: 'outreach'   },
+        { file: 12, cat: 'outreach'   },
+        { file: 13, cat: 'outreach'   },
+        { file: 14, cat: 'campus'     },
+        { file: 15, cat: 'campus'     },
+        { file: 16, cat: 'campus'     },
+        { file: 17, cat: 'campus'     },
+        { src: '/images/awards1.jpeg',  cat: 'awards' },
+        { src: '/images/awards2.jpeg',  cat: 'awards' },
+        { src: '/images/awards3.jpeg',  cat: 'awards' },
+        { src: '/images/awards4.jpeg',  cat: 'awards' },
+        { src: '/images/awards5.jpeg',  cat: 'awards' },
+        { src: '/images/awards6.jpeg',  cat: 'awards' },
+        { src: '/images/awards7.jpeg',  cat: 'awards' },
+        { src: '/images/awards8.jpeg',  cat: 'awards' },
+        { src: '/images/awards9.jpeg',  cat: 'awards' },
+        { src: '/images/awards10.jpeg', cat: 'awards' },
+        { src: '/images/awards11.jpeg', cat: 'awards' },
+        { src: '/images/awards12.jpeg', cat: 'awards' },
+        { src: '/images/awards13.jpeg', cat: 'awards' },
+        { src: '/images/new.jpeg',      cat: 'outreach' },
+        { src: '/images/new2.jpeg',     cat: 'outreach' },
+        { src: '/images/new3.jpeg',     cat: 'outreach' },
+        { src: '/images/mpya1.jpeg',    cat: 'campus'     },
+        { src: '/images/mpya2.jpeg',    cat: 'graduation' },
+        { src: '/images/mpya3.jpeg',    cat: 'graduation' },
+        { src: '/images/mpya4.jpeg',    cat: 'graduation' },
+        { src: '/images/mpya5.jpeg',    cat: 'graduation' },
+        { src: '/images/mpya6.jpeg',    cat: 'campus'     },
+        { src: '/images/mpya7.jpeg',    cat: 'campus'     },
+        { src: '/images/mpya8.jpeg',    cat: 'campus'     },
+        { src: '/images/mpya9.jpeg',    cat: 'campus'     },
+      ];
+    %>
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5" id="gallery-grid">
+      <% photos.forEach(p => { %>
+      <div class="gallery-item break-inside-avoid rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-terracotta-100 reveal group cursor-pointer relative"
+           data-category="<%= p.cat %>">
+        <img src="<%= p.src || '/images/File ' + p.file + '.jpg' %>"
+             alt="Butemine School photo"
+             class="w-full h-auto block group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/30 transition-all duration-400 flex items-end justify-start p-4">
+          <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-terracotta-500 text-white text-xs font-bold px-3 py-1 rounded-full capitalize"><%= p.cat %></span>
         </div>
       </div>
       <% }) %>
+    </div>
+
+    <!-- Empty state (shown when no results) -->
+    <div id="gallery-empty" class="hidden text-center py-16">
+      <p class="text-bark/40 font-display text-xl">No photos in this category yet.</p>
     </div>
 
     <!-- Note about more photos -->
@@ -66,6 +129,36 @@
     </div>
   </div>
 </section>
+
+<script>
+  const btns  = document.querySelectorAll('.gallery-filter-btn');
+  const items = document.querySelectorAll('#gallery-grid .gallery-item');
+  const empty = document.getElementById('gallery-empty');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // Update active button style
+      btns.forEach(b => {
+        b.classList.remove('bg-terracotta-500', 'text-white');
+        b.classList.add('bg-white', 'border', 'border-terracotta-200', 'text-bark/70');
+      });
+      btn.classList.add('bg-terracotta-500', 'text-white');
+      btn.classList.remove('bg-white', 'border', 'border-terracotta-200', 'text-bark/70');
+
+      // Show/hide items
+      let visible = 0;
+      items.forEach(item => {
+        const match = filter === 'all' || item.dataset.category === filter;
+        item.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      empty.classList.toggle('hidden', visible > 0);
+    });
+  });
+</script>
 
 <%- include('partials/footer') %>
 </body>

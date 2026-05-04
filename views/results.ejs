@@ -28,8 +28,8 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
       <% [
-        { value: '66', suffix: '', label: t.results_stat_candidates_l, sub: t.results_stat_candidates_s, color: 'bark' },
-        { value: '65', suffix: '', label: t.results_stat_gradea_l, sub: t.results_stat_gradea_s, color: 'forest' },
+        { value: '72', suffix: '', label: t.results_stat_candidates_l, sub: t.results_stat_candidates_s, color: 'bark' },
+        { value: '70', suffix: '', label: t.results_stat_gradea_l, sub: t.results_stat_gradea_s, color: 'forest' },
         { value: '100', suffix: '%', label: t.results_stat_pass_l, sub: t.results_stat_pass_s, color: 'terracotta' },
         { value: '268', suffix: '', label: t.results_stat_avg_l, sub: t.results_stat_avg_s, color: 'gold' },
       ].forEach(stat => { %>
@@ -65,7 +65,7 @@
               <span class="bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full">LATEST</span>
               <h3 class="font-display text-2xl font-bold text-white">PSLE 2025</h3>
             </div>
-            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">266.65 / 300 — Grade A (<%= t.results_grade_excellent %>)</span></p>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">266.65 / 300 · Grade A (<%= t.results_grade_excellent %>)</span></p>
           </div>
           <div class="flex gap-6 text-right">
             <div>
@@ -133,7 +133,7 @@
         <div class="bg-forest-700 px-6 py-5 flex flex-wrap items-center justify-between gap-4">
           <div>
             <h3 class="font-display text-2xl font-bold text-white mb-1">PSLE 2024</h3>
-            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">271.36 / 300 — Grade A (<%= t.results_grade_excellent %>)</span></p>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">271.36 / 300 · Grade A (<%= t.results_grade_excellent %>)</span></p>
           </div>
           <div class="flex gap-6 text-right">
             <div>
@@ -201,7 +201,7 @@
         <div class="bg-bark px-6 py-5 flex flex-wrap items-center justify-between gap-4">
           <div>
             <h3 class="font-display text-2xl font-bold text-white mb-1">PSLE 2023</h3>
-            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">271.74 / 300 — Grade A (<%= t.results_grade_excellent %>)</span></p>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">271.74 / 300 · Grade A (<%= t.results_grade_excellent %>)</span></p>
           </div>
           <div class="flex gap-6 text-right">
             <div>
@@ -241,7 +241,7 @@
         </div>
         <div class="px-6 py-3 bg-forest-50 border-t border-forest-100 flex items-center gap-2">
           <svg class="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-          <span class="text-forest-700 text-xs font-semibold">22 Grade A, 1 Grade B — all candidates passed. Source: NECTA 2023</span>
+          <span class="text-forest-700 text-xs font-semibold">22 Grade A, 1 Grade B. All candidates passed. Source: NECTA 2023</span>
         </div>
       </div>
 
@@ -253,7 +253,7 @@
               <span class="bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full"><%= t.results_best_award %></span>
               <h3 class="font-display text-2xl font-bold text-white">PSLE 2022</h3>
             </div>
-            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">255.33 / 300 — Grade A (<%= t.results_grade_excellent %>)</span></p>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">255.33 / 300 · Grade A (<%= t.results_grade_excellent %>)</span></p>
           </div>
           <div class="flex gap-6 text-right">
             <div>
@@ -292,6 +292,73 @@
         </div>
       </div>
 
+      <!-- 2021 -->
+      <div class="card reveal overflow-hidden p-0">
+        <div class="bg-bark px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full">#1 WILAYANI</span>
+              <h3 class="font-display text-2xl font-bold text-white">PSLE 2021</h3>
+            </div>
+            <p class="text-white/60 text-sm">School Average: <span class="text-gold-400 font-bold">252.83 / 300 · Grade A (<%= t.results_grade_excellent %>)</span></p>
+          </div>
+          <div class="flex gap-6 text-right">
+            <div>
+              <div class="text-3xl font-display font-bold text-gold-400">5/6</div>
+              <div class="text-white/50 text-xs"><%= t.results_grade_a_sat %></div>
+            </div>
+            <div>
+              <div class="text-3xl font-display font-bold text-green-400">100%</div>
+              <div class="text-white/50 text-xs"><%= t.results_pass_rate %></div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 py-6">
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
+            <% [
+              { grade: 'A', count: 5,  label: t.results_grade_excellent,    bg: 'bg-forest-100',    text: 'text-forest-700',    bar: 'bg-forest-500',    pct: 83.3 },
+              { grade: 'B', count: 1,  label: t.results_grade_verygood,     bg: 'bg-terracotta-100',text: 'text-terracotta-700', bar: 'bg-terracotta-500', pct: 16.7 },
+              { grade: 'C', count: 0,  label: t.results_grade_good,         bg: 'bg-gold-100',      text: 'text-gold-700',       bar: 'bg-gold-500',       pct: 0 },
+              { grade: 'D', count: 0,  label: t.results_grade_satisfactory, bg: 'bg-gray-100',      text: 'text-gray-500',       bar: 'bg-gray-400',       pct: 0 },
+              { grade: 'E', count: 0,  label: t.results_grade_fail,         bg: 'bg-red-100',       text: 'text-red-500',        bar: 'bg-red-400',        pct: 0 },
+            ].forEach(g => { %>
+            <div class="<%= g.bg %> rounded-xl p-4 text-center">
+              <div class="font-display text-3xl font-bold <%= g.text %> mb-1"><%= g.count %></div>
+              <div class="text-xs font-bold <%= g.text %> mb-1">Grade <%= g.grade %></div>
+              <div class="text-xs text-bark/50"><%= g.label %></div>
+              <div class="w-full h-1 rounded-full bg-white/50 mt-2">
+                <div class="h-full rounded-full <%= g.bar %>" style="width:<%= g.pct %>%"></div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <div class="flex flex-wrap gap-4 text-sm text-bark/70 mb-4">
+            <span>👧 <%= t.results_girls_a %>: <strong class="text-bark">2</strong></span>
+            <span>👦 <%= t.results_boys_a %>: <strong class="text-bark">3</strong></span>
+            <span>📊 <%= t.results_total_sat %>: <strong class="text-bark">6</strong></span>
+          </div>
+          <!-- Rankings -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-gold-50 border border-gold-200 rounded-xl p-3 text-center">
+              <div class="font-display text-2xl font-bold text-gold-600">#1</div>
+              <div class="text-xs text-bark/60 mt-0.5">Wilaya (1/29)</div>
+            </div>
+            <div class="bg-forest-50 border border-forest-200 rounded-xl p-3 text-center">
+              <div class="font-display text-2xl font-bold text-forest-600">#11</div>
+              <div class="text-xs text-bark/60 mt-0.5">Mkoa (11/290)</div>
+            </div>
+            <div class="bg-terracotta-50 border border-terracotta-200 rounded-xl p-3 text-center">
+              <div class="font-display text-2xl font-bold text-terracotta-600">#91</div>
+              <div class="text-xs text-bark/60 mt-0.5">Kitaifa (91/5664)</div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 py-3 bg-forest-50 border-t border-forest-100 flex items-center gap-2">
+          <svg class="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <span class="text-forest-700 text-xs font-semibold">5 Grade A, 1 Grade B. Ranked #1 in Ngorongoro District. Source: NECTA 2021</span>
+        </div>
+      </div>
+
     </div><!-- /space-y-8 -->
 
     <!-- NECTA verification links -->
@@ -301,6 +368,12 @@
         <%= t.results_verify %>
       </h4>
       <div class="flex flex-wrap gap-3">
+        <a href="https://maktaba.tetea.org/exam-results/PSLE2021/shl_ps0107080.htm"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-terracotta-200 text-terracotta-600 text-sm font-semibold hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-200">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          PSLE 2021
+        </a>
         <% [2022, 2023, 2024, 2025].forEach(yr => { %>
         <a href="https://onlinesys.necta.go.tz/results/<%= yr %>/psle/results/shl_ps0107080.htm"
            target="_blank" rel="noopener noreferrer"

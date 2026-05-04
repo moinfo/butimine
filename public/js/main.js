@@ -183,25 +183,30 @@ if (galleryItems.length) {
   });
 })();
 
-// ── More dropdown ─────────────────────────────────────────────────
-const moreBtn  = document.getElementById('more-btn');
-const moreMenu = document.getElementById('more-menu');
-const moreChev = document.getElementById('more-chevron');
-if (moreBtn && moreMenu) {
-  moreBtn.addEventListener('click', (e) => {
+// ── Dropdown factory ──────────────────────────────────────────────
+function initDropdown(btnId, menuId, chevId, wrapId) {
+  const btn  = document.getElementById(btnId);
+  const menu = document.getElementById(menuId);
+  const chev = document.getElementById(chevId);
+  if (!btn || !menu) return;
+  btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const open = moreMenu.classList.toggle('hidden');
-    moreBtn.setAttribute('aria-expanded', String(!open));
-    moreChev.style.transform = open ? '' : 'rotate(180deg)';
+    const open = menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!open));
+    if (chev) chev.style.transform = open ? '' : 'rotate(180deg)';
   });
   document.addEventListener('click', (e) => {
-    if (!document.getElementById('more-dropdown-wrap').contains(e.target)) {
-      moreMenu.classList.add('hidden');
-      moreBtn.setAttribute('aria-expanded', 'false');
-      moreChev.style.transform = '';
+    const wrap = document.getElementById(wrapId);
+    if (wrap && !wrap.contains(e.target)) {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      if (chev) chev.style.transform = '';
     }
   });
 }
+initDropdown('more-btn',      'more-menu',      'more-chevron',      'more-dropdown-wrap');
+initDropdown('academics-btn', 'academics-menu', 'academics-chevron', 'academics-dropdown-wrap');
+initDropdown('about-btn',     'about-menu',     'about-chevron',     'about-dropdown-wrap');
 
 // ── Back to top ───────────────────────────────────────────────────
 const backTop = document.getElementById('back-to-top');

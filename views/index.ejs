@@ -328,11 +328,33 @@
 
       <div class="reveal">
         <h4 class="font-display text-lg text-gold-400 mb-5 font-semibold"><%= t.home_location_nearby %></h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <% ['Serengeti National Park', 'Ngorongoro Conservation Area', 'Mount Oldonyo Lengai', 'Lake Natron', 'Shimo la Mungu', 'Clency-Ololosokwan'].forEach((site, i) => { %>
-          <div class="reveal group flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-gold-500/40 rounded-xl px-4 py-3 transition-all duration-300 cursor-default" style="transition-delay: <%= i*50 %>ms">
-            <span class="w-2 h-2 bg-gold-400 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
-            <span class="text-white/85 text-sm font-medium"><%= site %></span>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <%
+            const nearbyPlaces = [
+              { name: 'Serengeti', sub: 'National Park', icon: '🦁', grad: 'linear-gradient(135deg,#b8860b,#6b4f12)', img: '/images/nearby/serengeti.jpg' },
+              { name: 'Ngorongoro', sub: 'Conservation Area', icon: '🌋', grad: 'linear-gradient(135deg,#1a7a3a,#0c3b1c)', img: '/images/nearby/ngorongoro.jpg' },
+              { name: 'Oldonyo Lengai', sub: 'Active Volcano', icon: '⛰️', grad: 'linear-gradient(135deg,#555,#222)', img: '/images/nearby/lengai.jpg' },
+              { name: 'Lake Natron', sub: 'Flamingo Lake', icon: '🦩', grad: 'linear-gradient(135deg,#b03060,#7b1a3a)', img: '/images/nearby/natron.jpg' },
+              { name: 'Shimo la Mungu', sub: 'Sacred Gorge', icon: '🏔️', grad: 'linear-gradient(135deg,#8B7355,#4a3728)', img: '/images/nearby/shimo.jpg' },
+              { name: 'Ololosokwan', sub: 'Maasai Community', icon: '🏘️', grad: 'linear-gradient(135deg,#c0392b,#7b1a0e)', img: '/images/nearby/Ololosokwan.jpeg' },
+            ];
+          %>
+          <% nearbyPlaces.forEach((place, i) => { %>
+          <div class="group relative rounded-2xl overflow-hidden cursor-default aspect-[4/3] reveal"
+               style="transition-delay: <%= i*60 %>ms">
+            <!-- background: real image with gradient fallback -->
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                 style="background-image: url('<%= place.img %>'), <%= place.grad %>;">
+            </div>
+            <!-- dark overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+            <!-- icon top-right -->
+            <span class="absolute top-2 right-2 text-lg leading-none"><%= place.icon %></span>
+            <!-- text bottom -->
+            <div class="absolute bottom-0 left-0 right-0 p-3">
+              <p class="text-white font-bold text-xs leading-tight"><%= place.name %></p>
+              <p class="text-white/60 text-[10px] leading-tight mt-0.5"><%= place.sub %></p>
+            </div>
           </div>
           <% }) %>
         </div>

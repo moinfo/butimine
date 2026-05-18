@@ -12,46 +12,136 @@
         </div>
         <div>
           <div class="nav-logo-text font-display font-bold text-base text-white leading-tight group-hover:text-gold-300 transition-colors duration-300">Butemine School</div>
-          <div class="text-[10px] text-gold-400 tracking-widest uppercase leading-tight">Primary School · Tanzania</div>
+          <div class="text-[10px] text-gold-400 tracking-widest uppercase leading-tight" data-i18n="nav.tagline">Primary School · Tanzania</div>
         </div>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-7">
-        <a href="/" class="nav-link text-white <%= page === 'home' ? 'after:!w-full !text-gold-300' : '' %>">Home</a>
-        <a href="/about" class="nav-link text-white <%= page === 'about' ? 'after:!w-full !text-gold-300' : '' %>">About Us</a>
-        <a href="/admissions" class="nav-link text-white <%= page === 'admissions' ? 'after:!w-full !text-gold-300' : '' %>">Admissions</a>
-        <a href="/schools" class="nav-link text-white <%= page === 'schools' ? 'after:!w-full !text-gold-300' : '' %>">Our Schools</a>
-        <a href="/gallery" class="nav-link text-white <%= page === 'gallery' ? 'after:!w-full !text-gold-300' : '' %>">Gallery</a>
+      <div class="hidden lg:flex items-center gap-6">
 
-        <!-- More Dropdown (click-controlled) -->
-        <div class="relative" id="more-dropdown-wrap">
-          <button id="more-btn" aria-expanded="false" aria-haspopup="true"
-                  class="nav-link text-white flex items-center gap-1 <%= ['news','results'].includes(page) ? 'after:!w-full !text-gold-300' : '' %>">
-            More
-            <svg id="more-chevron" class="w-3.5 h-3.5 opacity-60 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        <a href="/"       class="nav-link text-white <%= page === 'home'    ? 'after:!w-full !text-gold-300' : '' %>" data-i18n="nav.home">Home</a>
+        <a href="/about"  class="nav-link text-white <%= page === 'about'   ? 'after:!w-full !text-gold-300' : '' %>" data-i18n="nav.about">About</a>
+        <a href="/gallery" class="nav-link text-white <%= page === 'gallery' ? 'after:!w-full !text-gold-300' : '' %>" data-i18n="nav.gallery">Gallery</a>
+
+        <!-- Programs Dropdown -->
+        <div class="relative" id="programs-dropdown-wrap">
+          <button id="programs-btn" aria-expanded="false" aria-haspopup="true"
+                  class="nav-link text-white flex items-center gap-1.5 <%= ['schools','admissions','news','results'].includes(page) ? 'after:!w-full !text-gold-300' : '' %>">
+            <span data-i18n="nav.programs">Programs</span>
+            <svg id="programs-chevron" class="w-3.5 h-3.5 opacity-60 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
           </button>
-          <div id="more-menu"
-               class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-bark/97 backdrop-blur-xl border border-white/10 rounded-2xl py-2 shadow-2xl hidden">
-            <a href="/news" class="flex items-center gap-3 px-4 py-3 text-sm text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors rounded-xl mx-1 <%= page === 'news' ? 'text-gold-400 bg-white/5' : '' %>">
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              News & Updates
-            </a>
-            <a href="/results" class="flex items-center gap-3 px-4 py-3 text-sm text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors rounded-xl mx-1 <%= page === 'results' ? 'text-gold-400 bg-white/5' : '' %>">
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              Academic Results
-            </a>
+
+          <!-- Dropdown panel -->
+          <div id="programs-menu"
+               class="absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 w-80
+                      bg-bark/97 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl
+                      opacity-0 scale-95 pointer-events-none
+                      transition-all duration-200 origin-top
+                      overflow-hidden">
+
+            <!-- Header strip -->
+            <div class="px-4 pt-4 pb-3 border-b border-white/8">
+              <p class="text-[10px] font-bold text-white/30 uppercase tracking-[0.18em]" data-i18n="nav.programs">Programs</p>
+            </div>
+
+            <div class="p-2">
+              <!-- Our Schools -->
+              <a href="/schools"
+                 class="flex items-center gap-3.5 px-3 py-3 rounded-xl transition-all duration-200
+                        hover:bg-white/8 group/item <%= page === 'schools' ? 'bg-white/8' : '' %>">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0
+                            bg-terracotta-500/15 border border-terracotta-500/25
+                            group-hover/item:bg-terracotta-500/25 group-hover/item:border-terracotta-500/40
+                            transition-all duration-200">
+                  <svg class="w-4 h-4 text-terracotta-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-sm font-semibold text-white group-hover/item:text-gold-300 transition-colors" data-i18n="nav.schools">Our Schools</div>
+                  <div class="text-xs text-white/40 mt-0.5 truncate" data-i18n="nav.schools.desc">Three campuses across Ngorongoro</div>
+                </div>
+                <svg class="w-3.5 h-3.5 text-white/20 group-hover/item:text-gold-400 group-hover/item:translate-x-0.5 transition-all ml-auto shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+
+              <!-- Admissions -->
+              <a href="/admissions"
+                 class="flex items-center gap-3.5 px-3 py-3 rounded-xl transition-all duration-200
+                        hover:bg-white/8 group/item <%= page === 'admissions' ? 'bg-white/8' : '' %>">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0
+                            bg-gold-500/15 border border-gold-500/25
+                            group-hover/item:bg-gold-500/25 group-hover/item:border-gold-500/40
+                            transition-all duration-200">
+                  <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-sm font-semibold text-white group-hover/item:text-gold-300 transition-colors" data-i18n="nav.admissions">Admissions</div>
+                  <div class="text-xs text-white/40 mt-0.5 truncate" data-i18n="nav.admissions.desc">Enroll your child today</div>
+                </div>
+                <svg class="w-3.5 h-3.5 text-white/20 group-hover/item:text-gold-400 group-hover/item:translate-x-0.5 transition-all ml-auto shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+
+              <div class="mx-2 my-1.5 border-t border-white/8"></div>
+
+              <!-- News -->
+              <a href="/news"
+                 class="flex items-center gap-3.5 px-3 py-3 rounded-xl transition-all duration-200
+                        hover:bg-white/8 group/item <%= page === 'news' ? 'bg-white/8' : '' %>">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0
+                            bg-terracotta-400/15 border border-terracotta-400/25
+                            group-hover/item:bg-terracotta-400/25 group-hover/item:border-terracotta-400/40
+                            transition-all duration-200">
+                  <svg class="w-4 h-4 text-terracotta-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z"/><polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-sm font-semibold text-white group-hover/item:text-gold-300 transition-colors" data-i18n="nav.news">News & Updates</div>
+                  <div class="text-xs text-white/40 mt-0.5 truncate" data-i18n="nav.news.desc">Latest stories from school</div>
+                </div>
+                <svg class="w-3.5 h-3.5 text-white/20 group-hover/item:text-gold-400 group-hover/item:translate-x-0.5 transition-all ml-auto shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+
+              <!-- Results -->
+              <a href="/results"
+                 class="flex items-center gap-3.5 px-3 py-3 rounded-xl transition-all duration-200
+                        hover:bg-white/8 group/item <%= page === 'results' ? 'bg-white/8' : '' %>">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0
+                            bg-forest-500/15 border border-forest-500/25
+                            group-hover/item:bg-forest-500/25 group-hover/item:border-forest-500/40
+                            transition-all duration-200">
+                  <svg class="w-4 h-4 text-forest-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-sm font-semibold text-white group-hover/item:text-gold-300 transition-colors" data-i18n="nav.results">Academic Results</div>
+                  <div class="text-xs text-white/40 mt-0.5 truncate" data-i18n="nav.results.desc">Exam performance & records</div>
+                </div>
+                <svg class="w-3.5 h-3.5 text-white/20 group-hover/item:text-gold-400 group-hover/item:translate-x-0.5 transition-all ml-auto shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="w-px h-5 bg-white/20 mx-1"></div>
+
+        <!-- Language toggle -->
+        <div class="flex items-center rounded-full border border-white/25 overflow-hidden text-[11px] font-bold">
+          <button data-lang-btn="en" class="lang-active px-2.5 py-1 text-white/70 hover:text-white transition-colors" aria-label="English">EN</button>
+          <div class="w-px h-3.5 bg-white/20"></div>
+          <button data-lang-btn="sw" class="px-2.5 py-1 text-white/70 hover:text-white transition-colors" aria-label="Kiswahili">SW</button>
+        </div>
+
         <!-- Dark / Light toggle -->
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-          <!-- Moon: visible in light mode -->
           <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
-          <!-- Sun: visible in dark mode -->
           <svg class="icon-sun w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -60,11 +150,16 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
         </button>
+
         <a href="/donate" class="<%= page === 'donate' ? 'btn-gold' : 'btn-donate-nav' %> text-sm py-2 px-5 flex items-center gap-2">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Support Us
+          <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span data-i18n="nav.support">Support Us</span>
         </a>
-        <a href="/contact" class="btn-primary text-sm py-2.5 px-6">Contact Us</a>
+        <a href="/contact" class="btn-primary text-sm py-2.5 px-6" data-i18n="nav.contact">Contact Us</a>
+        <a href="/admin/login" class="flex items-center gap-1.5 text-white/50 hover:text-gold-400 text-xs font-medium transition-colors duration-200" title="Admin Login">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span data-i18n="nav.login">Login</span>
+        </a>
       </div>
 
       <!-- Hamburger -->
@@ -80,22 +175,71 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden lg:hidden -translate-y-4 opacity-0 bg-bark/97 backdrop-blur-xl border-t border-white/10">
     <div class="max-w-7xl mx-auto px-6 py-7 flex flex-col gap-1">
-      <% [['/', 'Home', 'home'], ['/about','About Us','about'], ['/admissions','Admissions','admissions'],
-          ['/schools','Our Schools','schools'], ['/gallery','Gallery','gallery'],
-          ['/news','News & Updates','news'], ['/results','Matokeo','results']].forEach(([href, label, key]) => { %>
+
+      <!-- Top links -->
+      <% [
+        ['/',       'nav.home',    'home',    'Home'],
+        ['/about',  'nav.about',   'about',   'About Us'],
+        ['/gallery','nav.gallery', 'gallery', 'Gallery'],
+      ].forEach(function(item) {
+        var href = item[0], key = item[1], pg = item[2], label = item[3];
+      %>
       <a href="<%= href %>"
-         class="text-white font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between <%= page === key ? 'bg-white/10 text-gold-400' : '' %>">
-        <%= label %>
+         class="text-white font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between <%= page === pg ? 'bg-white/10 text-gold-400' : '' %>">
+        <span data-i18n="<%= key %>"><%= label %></span>
         <svg class="w-4 h-4 opacity-40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
       </a>
       <% }) %>
+
+      <!-- Programs accordion -->
+      <div>
+        <button id="mobile-programs-btn"
+                class="w-full text-white font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between
+                       <%= ['schools','admissions','news','results'].includes(page) ? 'bg-white/10 text-gold-400' : '' %>">
+          <span data-i18n="nav.programs">Programs</span>
+          <svg id="mobile-programs-chevron" class="w-4 h-4 opacity-40 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="mobile-programs-panel" class="hidden pl-2 pt-1 pb-2 flex flex-col gap-0.5">
+          <% [
+            ['/schools',    'nav.schools',    'schools',    'Our Schools',       'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10'],
+            ['/admissions', 'nav.admissions', 'admissions', 'Admissions',        'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8'],
+            ['/news',       'nav.news',       'news',       'News & Updates',    'M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z M14 2v6h6'],
+            ['/results',    'nav.results',    'results',    'Academic Results',  'M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'],
+          ].forEach(function(item) {
+            var href = item[0], key = item[1], pg = item[2], label = item[3], iconPath = item[4];
+          %>
+          <a href="<%= href %>"
+             class="flex items-center gap-3 text-white/80 py-2.5 px-4 rounded-xl hover:bg-white/8 hover:text-white transition-colors <%= page === pg ? 'bg-white/8 text-gold-400' : '' %>">
+            <svg class="w-4 h-4 opacity-60 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="<%= iconPath %>"/></svg>
+            <span class="text-sm" data-i18n="<%= key %>"><%= label %></span>
+          </a>
+          <% }) %>
+        </div>
+      </div>
+
       <div class="border-t border-white/10 pt-3 mt-2 flex flex-col gap-3">
         <a href="/donate" class="flex items-center justify-center gap-2 font-semibold py-3 px-4 rounded-xl border-2 border-gold-400 text-gold-400 hover:bg-gold-400/10 transition-colors <%= page === 'donate' ? 'bg-gold-400/15' : '' %>">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Support Us
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span data-i18n="nav.support">Support Us</span>
         </a>
-        <a href="/contact" class="btn-primary text-center">Contact Us</a>
+        <a href="/contact" class="btn-primary text-center" data-i18n="nav.contact">Contact Us</a>
+
+        <!-- Language toggle (mobile) -->
+        <div class="flex items-center justify-center gap-3 pt-1">
+          <span class="text-white/40 text-xs">Language:</span>
+          <div class="flex items-center rounded-full border border-white/25 overflow-hidden text-xs font-bold">
+            <button data-lang-btn="en" class="lang-active px-3 py-1.5 text-white/70 hover:text-white transition-colors">EN</button>
+            <div class="w-px h-4 bg-white/20"></div>
+            <button data-lang-btn="sw" class="px-3 py-1.5 text-white/70 hover:text-white transition-colors">SW</button>
+          </div>
+        </div>
+
+        <a href="/admin/login" class="flex items-center justify-center gap-2 text-white/50 hover:text-gold-400 text-xs font-medium transition-colors py-2">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span data-i18n="nav.login">Login</span>
+        </a>
       </div>
+
       <div class="flex justify-center gap-4 mt-5 pt-5 border-t border-white/10">
         <a href="https://www.facebook.com/share/1CfGeEVe3b/" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold-400 transition-colors text-xs">Facebook</a>
         <span class="text-white/20">·</span>

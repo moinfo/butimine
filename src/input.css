@@ -215,6 +215,42 @@
 ::-webkit-scrollbar-track { background: #FAF6EF; }
 ::-webkit-scrollbar-thumb { background: #4A90D9; border-radius: 3px; }
 
+/* ─── Gallery filter buttons ───────────────────────────────────── */
+.filter-btn {
+  background: white;
+  border: 1px solid #BFCFE8;
+  color: rgba(13,27,62,0.6);
+}
+.filter-btn:hover {
+  border-color: #4A90D9;
+  color: #4A90D9;
+}
+.filter-btn.active-filter {
+  background: #4A90D9;
+  border-color: #4A90D9;
+  color: white;
+}
+.dark .filter-btn {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(212,227,255,0.6);
+}
+.dark .filter-btn:hover {
+  border-color: #4A90D9;
+  color: #4A90D9;
+}
+.dark .filter-btn.active-filter {
+  background: #4A90D9;
+  border-color: #4A90D9;
+  color: white;
+}
+
+/* ─── Language toggle ─────────────────────────────────────────── */
+.lang-active {
+  color: white !important;
+  background: rgba(255,255,255,0.2);
+}
+
 /* ─── Form focus ───────────────────────────────────────────────── */
 input:focus, textarea:focus, select:focus {
   outline: none;

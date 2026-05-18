@@ -1,10 +1,34 @@
-<!DOCTYPE html>
+<%
+  var _title     = typeof title       !== 'undefined' ? title       : null;
+  var _desc      = typeof description !== 'undefined' ? description : 'Butemine English Medium Pre & Primary School — quality Daycare, Nursery, and Primary education (Std 1–7) in Samunge, Ngorongoro District, Tanzania.';
+  var _canonical = typeof canonical   !== 'undefined' ? canonical   : 'https://butemine.ac.tz';
+  var _ogImage   = typeof ogImage     !== 'undefined' ? ogImage     : 'https://butemine.ac.tz/logo.png';
+  var _fullTitle = _title ? _title + ' | Butemine School — Tanzania' : 'Butemine School — Quality Education in Tanzania';
+%><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Butemine Primary School — Quality education in Samunge, Ngorongoro District, Tanzania. Daycare, Nursery, and Primary education for children." />
-  <title><%= typeof title !== 'undefined' ? title + ' | ' : '' %>Butemine School — Tanzania</title>
+
+  <!-- Primary SEO -->
+  <title><%= _fullTitle %></title>
+  <meta name="description" content="<%= _desc %>" />
+  <link rel="canonical" href="<%= _canonical %>" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Butemine School" />
+  <meta property="og:title"       content="<%= _fullTitle %>" />
+  <meta property="og:description" content="<%= _desc %>" />
+  <meta property="og:url"         content="<%= _canonical %>" />
+  <meta property="og:image"       content="<%= _ogImage %>" />
+  <meta property="og:locale"      content="en_TZ" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="<%= _fullTitle %>" />
+  <meta name="twitter:description" content="<%= _desc %>" />
+  <meta name="twitter:image"       content="<%= _ogImage %>" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,5 +48,32 @@
       if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))
         document.documentElement.classList.add('dark');
     })();
+  </script>
+
+  <!-- JSON-LD: School -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "School",
+    "name": "Butemine English Medium Pre & Primary School",
+    "url": "https://butemine.ac.tz",
+    "logo": "https://butemine.ac.tz/logo.png",
+    "image": "https://butemine.ac.tz/logo.png",
+    "description": "Quality Daycare, Nursery, and Primary education (Std 1–7) in Samunge, Ngorongoro District, Tanzania. Founded 2013.",
+    "foundingDate": "2013",
+    "telephone": "+255788384699",
+    "email": "info@butemine.ac.tz",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Samunge Village, Samunge Ward, Sale Division",
+      "addressLocality": "Ngorongoro District",
+      "addressRegion": "Arusha",
+      "addressCountry": "TZ"
+    },
+    "sameAs": [
+      "https://www.facebook.com/share/1CfGeEVe3b/",
+      "https://www.instagram.com/butemineschool"
+    ]
+  }
   </script>
 </head>

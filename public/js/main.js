@@ -183,23 +183,50 @@ if (galleryItems.length) {
   });
 })();
 
-// ── More dropdown ─────────────────────────────────────────────────
-const moreBtn  = document.getElementById('more-btn');
-const moreMenu = document.getElementById('more-menu');
-const moreChev = document.getElementById('more-chevron');
-if (moreBtn && moreMenu) {
-  moreBtn.addEventListener('click', (e) => {
+// ── Programs dropdown (desktop) ────────────────────────────────────
+const programsBtn  = document.getElementById('programs-btn');
+const programsMenu = document.getElementById('programs-menu');
+const programsChev = document.getElementById('programs-chevron');
+const programsWrap = document.getElementById('programs-dropdown-wrap');
+
+if (programsBtn && programsMenu) {
+  function openPrograms() {
+    programsMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+    programsMenu.classList.add('opacity-100', 'scale-100');
+    programsBtn.setAttribute('aria-expanded', 'true');
+    programsChev.style.transform = 'rotate(180deg)';
+  }
+  function closePrograms() {
+    programsMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+    programsMenu.classList.remove('opacity-100', 'scale-100');
+    programsBtn.setAttribute('aria-expanded', 'false');
+    programsChev.style.transform = '';
+  }
+
+  programsBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const open = moreMenu.classList.toggle('hidden');
-    moreBtn.setAttribute('aria-expanded', String(!open));
-    moreChev.style.transform = open ? '' : 'rotate(180deg)';
+    programsMenu.classList.contains('pointer-events-none') ? openPrograms() : closePrograms();
   });
+
   document.addEventListener('click', (e) => {
-    if (!document.getElementById('more-dropdown-wrap').contains(e.target)) {
-      moreMenu.classList.add('hidden');
-      moreBtn.setAttribute('aria-expanded', 'false');
-      moreChev.style.transform = '';
-    }
+    if (programsWrap && !programsWrap.contains(e.target)) closePrograms();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePrograms();
+  });
+}
+
+// ── Programs accordion (mobile) ────────────────────────────────────
+const mobileProgramsBtn   = document.getElementById('mobile-programs-btn');
+const mobileProgramsPanel = document.getElementById('mobile-programs-panel');
+const mobileProgramsChev  = document.getElementById('mobile-programs-chevron');
+
+if (mobileProgramsBtn && mobileProgramsPanel) {
+  mobileProgramsBtn.addEventListener('click', () => {
+    const isOpen = !mobileProgramsPanel.classList.contains('hidden');
+    mobileProgramsPanel.classList.toggle('hidden', isOpen);
+    mobileProgramsChev.style.transform = isOpen ? '' : 'rotate(180deg)';
   });
 }
 

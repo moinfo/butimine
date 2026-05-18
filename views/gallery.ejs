@@ -7,9 +7,9 @@
 <section class="page-hero">
   <div class="absolute inset-0 hero-pattern opacity-20"></div>
   <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-    <span class="section-label text-gold-400">Photo Gallery</span>
-    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mt-2 mb-4">Life at <em class="text-gold-400">Butemine</em></h1>
-    <p class="text-white/70 text-lg max-w-2xl mx-auto">A window into the daily life, events, and milestones of our students and community.</p>
+    <span class="section-label text-gold-400" data-i18n="gallery.photolabel">Photo Gallery</span>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mt-2 mb-4" data-i18n="gallery.title">Life at <em class="text-gold-400">Butemine</em></h1>
+    <p class="text-white/70 text-lg max-w-2xl mx-auto" data-i18n="gallery.subtitle">A window into the daily life, events, and milestones of our students and community.</p>
   </div>
 </section>
 
@@ -17,39 +17,116 @@
 <section class="py-24 bg-cream">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Filter bar (visual only) -->
-    <div class="flex flex-wrap gap-3 justify-center mb-12 reveal">
-      <% ['All Photos', 'School Life', 'Events', 'Community', 'Campus'].forEach((cat, i) => { %>
-      <button class="px-5 py-2 rounded-full text-sm font-semibold transition-all <%= i === 0 ? 'bg-terracotta-500 text-white' : 'bg-white border border-terracotta-200 text-bark/70 hover:border-terracotta-500 hover:text-terracotta-500' %>">
-        <%= cat %>
-      </button>
-      <% }) %>
+    <!-- Filter bar -->
+    <div class="flex flex-wrap gap-3 justify-center mb-4 reveal">
+      <button data-filter="all"         class="filter-btn active-filter px-5 py-2 rounded-full text-sm font-semibold transition-all" data-i18n="gallery.all">All Photos</button>
+      <button data-filter="school-life" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-i18n="gallery.life">School Life</button>
+      <button data-filter="events"      class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-i18n="gallery.events">Events</button>
+      <button data-filter="community"   class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-i18n="gallery.community">Community</button>
+      <button data-filter="campus"      class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-i18n="gallery.campus">Campus</button>
+      <button data-filter="awards"      class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-i18n="gallery.awards">Awards</button>
     </div>
 
-    <!-- Masonry-style grid -->
-    <div class="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
-      <% [1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17].forEach(i => { %>
-      <div class="gallery-item break-inside-avoid rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 bg-terracotta-100 reveal group cursor-pointer relative">
-        <img src="/images/File <%= i %>.jpg"
-             alt="Butemine School — Photo <%= i %>"
-             class="w-full h-auto block" />
-        <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/30 transition-all duration-400 flex items-center justify-center">
+    <!-- Photo count -->
+    <p id="photo-count" class="text-center text-bark/40 text-sm mb-10"></p>
+
+    <!-- Gallery grid -->
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5" id="gallery-grid">
+
+      <%
+        var photos = [
+          // School Life
+          { file: 'File 2.jpg',   cat: 'school-life', alt: 'Boys in school uniform' },
+          { file: 'File 4.jpg',   cat: 'school-life', alt: 'Girls in school uniform' },
+          { file: 'File 6.jpg',   cat: 'school-life', alt: 'Students in uniform' },
+          { file: 'File 9.jpg',   cat: 'school-life', alt: 'Students in uniform' },
+          { file: 'File 10.jpg',  cat: 'school-life', alt: 'Students in blue uniform' },
+          { file: 'File 18.jpg',  cat: 'school-life', alt: 'Students at Jema Branch' },
+          { file: 'File 19.jpg',  cat: 'school-life', alt: 'Teacher with young students' },
+          { file: 'File 20.jpg',  cat: 'school-life', alt: 'School founders with students' },
+          { file: 'mpya6.jpeg',   cat: 'school-life', alt: 'Computer class in session' },
+
+          // Events
+          { file: 'File 1.jpg',   cat: 'events', alt: 'School choir performance' },
+          { file: 'File 8.jpg',   cat: 'events', alt: 'Girls choir group' },
+          { file: 'File 11.jpg',  cat: 'events', alt: 'Students at school event' },
+          { file: 'File 12.jpg',  cat: 'events', alt: 'Group photo at ceremony' },
+          { file: 'File 13.jpg',  cat: 'events', alt: '5th Graduation Ceremony 2025' },
+          { file: 'File 14.jpg',  cat: 'events', alt: '5th Graduation Ceremony 2025 — Staff' },
+          { file: 'File 15.jpg',  cat: 'events', alt: '5th Graduation Ceremony 2025' },
+          { file: 'File 16.jpg',  cat: 'events', alt: '5th Graduation Ceremony 2025 — Teachers' },
+          { file: 'File 17.jpg',  cat: 'events', alt: '5th Graduation Ceremony 2025' },
+          { file: 'mpya2.jpeg',   cat: 'events', alt: 'Student receiving certificate' },
+          { file: 'mpya3.jpeg',   cat: 'events', alt: 'Graduation ceremony' },
+          { file: 'mpya4.jpeg',   cat: 'events', alt: 'Students at gathering' },
+          { file: 'mpya5.jpeg',   cat: 'events', alt: 'Students with teacher' },
+
+          // Community
+          { file: 'File 21.jpg',  cat: 'community', alt: 'Distribution of school supplies' },
+          { file: 'File 22.jpg',  cat: 'community', alt: 'Cultural event with community' },
+          { file: 'new.jpeg',     cat: 'community', alt: 'Tree planting activity' },
+          { file: 'new2.jpeg',    cat: 'community', alt: 'Tree planting with students' },
+          { file: 'new3.jpeg',    cat: 'community', alt: 'Tree planting day' },
+
+          // Campus
+          { file: 'File 3.jpg',   cat: 'campus', alt: 'Butemine School — Samunge HQ' },
+          { file: 'mpya1.jpeg',   cat: 'campus', alt: 'School garden and grounds' },
+          { file: 'mpya7.jpeg',   cat: 'campus', alt: 'School campus with flag' },
+          { file: 'mpya8.jpeg',   cat: 'campus', alt: 'New school building' },
+          { file: 'mpya9.jpeg',   cat: 'campus', alt: 'School dormitory' },
+
+          // Awards
+          { file: 'File 5.jpg',    cat: 'awards', alt: 'Certificate of Commendation — Best Primary School 2022' },
+          { file: 'File 7.jpg',    cat: 'awards', alt: 'Certificate of Achievement — Leading Private School 2021' },
+          { file: 'awards1.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards2.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards3.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards4.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards5.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards6.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards7.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards8.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards9.jpeg',  cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards10.jpeg', cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards11.jpeg', cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards12.jpeg', cat: 'awards', alt: 'Award ceremony' },
+          { file: 'awards13.jpeg', cat: 'awards', alt: 'Award ceremony' },
+        ];
+      %>
+
+      <% photos.forEach(function(p) { %>
+      <div class="gallery-item break-inside-avoid rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 bg-terracotta-100 group cursor-pointer relative"
+           data-category="<%= p.cat %>">
+        <img src="/images/<%= p.file %>"
+             alt="Butemine School — <%= p.alt %>"
+             class="w-full h-auto block"
+             loading="lazy" />
+        <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/30 transition-all duration-300 flex items-center justify-center">
           <svg class="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path d="M15 3h6m0 0v6m0-6L10 14M14 4H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h15a1 1 0 0 0 1-1v-9"/>
+            <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607zM10.5 7.5v6m3-3h-6"/>
           </svg>
         </div>
       </div>
       <% }) %>
+
     </div>
 
-    <!-- Note about more photos -->
-    <div class="text-center mt-16 reveal">
+    <!-- No results message -->
+    <div id="no-results" class="hidden text-center py-20 text-bark/40">
+      <svg class="w-12 h-12 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>
+      <p class="font-semibold text-lg" data-i18n="gallery.noresults">No photos in this category yet.</p>
+    </div>
+
+    <!-- More photos note -->
+    <div class="text-center mt-16">
       <div class="bg-gold-50 border border-gold-200 rounded-2xl p-8 inline-block max-w-lg">
         <svg class="w-8 h-8 text-gold-500 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
         </svg>
-        <h4 class="font-display font-bold text-bark text-lg mb-2">More Photos Coming Soon</h4>
-        <p class="text-bark/60 text-sm">Follow us on social media for regular updates from school events, student activities, and community celebrations.</p>
+        <h4 class="font-display font-bold text-bark text-lg mb-2" data-i18n="gallery.more">More Photos Coming Soon</h4>
+        <p class="text-bark/60 text-sm" data-i18n="gallery.moretxt">Follow us on social media for regular updates from school events, student activities, and community celebrations.</p>
         <div class="flex gap-3 justify-center mt-5">
           <a href="https://www.facebook.com/share/1CfGeEVe3b/" target="_blank" rel="noopener noreferrer"
              class="flex items-center gap-2 bg-white border border-gold-200 text-bark/70 hover:text-gold-600 hover:border-gold-400 px-4 py-2 rounded-lg text-sm font-medium transition-all">
@@ -64,8 +141,43 @@
         </div>
       </div>
     </div>
+
   </div>
 </section>
+
+<script>
+(function () {
+  var btns  = document.querySelectorAll('.filter-btn');
+  var items = document.querySelectorAll('#gallery-grid .gallery-item');
+  var noRes = document.getElementById('no-results');
+  var count = document.getElementById('photo-count');
+
+  function setCount(n) {
+    count.textContent = n + ' photo' + (n !== 1 ? 's' : '');
+  }
+
+  function applyFilter(filter) {
+    var visible = 0;
+    items.forEach(function (item) {
+      var show = filter === 'all' || item.dataset.category === filter;
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    noRes.classList.toggle('hidden', visible > 0);
+    setCount(visible);
+  }
+
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('active-filter'); });
+      btn.classList.add('active-filter');
+      applyFilter(btn.dataset.filter);
+    });
+  });
+
+  setCount(items.length);
+})();
+</script>
 
 <%- include('partials/footer') %>
 </body>

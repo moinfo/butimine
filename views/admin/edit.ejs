@@ -1,0 +1,93 @@
+<%- include('../partials/head', { title: 'Edit Article' }) %>
+<%
+  var _month = item.date ? item.date.split(' ')[0] : 'January';
+  var _year  = item.date ? item.date.split(' ')[1] : new Date().getFullYear().toString();
+  var allMonths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+%>
+<body class="font-body bg-cream min-h-screen">
+
+  <!-- Admin bar -->
+  <div class="bg-bark text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
+    <div class="flex items-center gap-3">
+      <img src="/logo.png" alt="Butemine" class="h-8 w-8 rounded-full bg-white/10 p-0.5" />
+      <span class="font-display font-bold text-base">Edit Article</span>
+    </div>
+    <div class="flex items-center gap-5 text-sm">
+      <a href="/admin/news" class="text-white/60 hover:text-gold-400 transition-colors">← Back to News</a>
+      <a href="/admin/logout" class="text-white/60 hover:text-red-400 transition-colors">Logout</a>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 py-10">
+    <div class="bg-white rounded-2xl border border-terracotta-100 shadow-sm p-8">
+      <h2 class="font-display text-xl font-bold text-bark mb-6">Edit Article</h2>
+
+      <form method="POST" action="/admin/news/edit/<%= index %>" class="space-y-5">
+
+        <div>
+          <label class="block text-xs font-semibold text-bark/70 uppercase tracking-widest mb-2">Title *</label>
+          <input type="text" name="title" value="<%= item.title %>" required
+                 class="w-full border border-terracotta-200 rounded-xl px-4 py-3 text-sm text-bark bg-cream focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-bark/70 uppercase tracking-widest mb-2">Date *</label>
+            <div class="flex gap-2">
+              <select name="month" required
+                      class="flex-1 border border-terracotta-200 rounded-xl px-3 py-3 text-sm text-bark bg-cream focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent">
+                <% allMonths.forEach(function(m) { %>
+                <option value="<%= m %>" <%= m === _month ? 'selected' : '' %>><%= m %></option>
+                <% }) %>
+              </select>
+              <select name="year" required
+                      class="w-24 border border-terracotta-200 rounded-xl px-3 py-3 text-sm text-bark bg-cream focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent">
+                <% for (var y = new Date().getFullYear() + 1; y >= 2020; y--) { %>
+                <option value="<%= y %>" <%= y.toString() === _year ? 'selected' : '' %>><%= y %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-bark/70 uppercase tracking-widest mb-2">Category *</label>
+            <select name="category" required
+                    class="w-full border border-terracotta-200 rounded-xl px-4 py-3 text-sm text-bark bg-cream focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent">
+              <% ['Academic','Events','Community','Volunteers','Support','Milestone'].forEach(function(cat) { %>
+              <option value="<%= cat %>" <%= cat === item.category ? 'selected' : '' %>><%= cat %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-bark/70 uppercase tracking-widest mb-2">Excerpt *</label>
+          <textarea name="excerpt" rows="4" required
+                    class="w-full border border-terracotta-200 rounded-xl px-4 py-3 text-sm text-bark bg-cream focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent resize-none"><%= item.excerpt %></textarea>
+        </div>
+
+        <div class="flex items-end gap-6">
+          <div class="flex-1">
+            <label class="block text-xs font-semibold text-bark/70 uppercase tracking-widest mb-2">Card Colour</label>
+            <select name="color"
+                    class="w-full border border-terracotta-200 rounded-xl px-4 py-3 text-sm text-bark bg-cream focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent">
+              <option value="terracotta" <%= item.color === 'terracotta' ? 'selected' : '' %>>Blue</option>
+              <option value="gold"       <%= item.color === 'gold'       ? 'selected' : '' %>>Green</option>
+              <option value="forest"     <%= item.color === 'forest'     ? 'selected' : '' %>>Dark Green</option>
+            </select>
+          </div>
+          <label class="flex items-center gap-3 cursor-pointer pb-3">
+            <input type="checkbox" name="featured" class="w-5 h-5 rounded accent-terracotta-500" <%= item.featured ? 'checked' : '' %> />
+            <span class="text-sm font-semibold text-bark/70">Featured</span>
+          </label>
+        </div>
+
+        <div class="flex gap-3 pt-2">
+          <button type="submit" class="btn-primary">Save Changes</button>
+          <a href="/admin/news" class="btn-outline-dark">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

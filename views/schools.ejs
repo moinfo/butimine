@@ -7,9 +7,9 @@
 <section class="page-hero">
   <div class="absolute inset-0 hero-pattern opacity-20"></div>
   <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-    <span class="section-label text-gold-400">Three Centres, One Mission</span>
-    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mt-2 mb-4">Our <em class="text-gold-400">Schools</em></h1>
-    <p class="text-white/70 text-lg max-w-2xl mx-auto">Bringing quality education closer to the communities that need it most — across Ngorongoro District, Tanzania.</p>
+    <span class="section-label text-gold-400" data-i18n="schools.hero.label">Three Centres, One Mission</span>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mt-2 mb-4" data-i18n="nav.schools">Our Schools</h1>
+    <p class="text-white/70 text-lg max-w-2xl mx-auto" data-i18n="schools.hero.subtitle">Bringing quality education closer to the communities that need it most — across Ngorongoro District, Tanzania.</p>
   </div>
 </section>
 
@@ -17,10 +17,10 @@
 <section class="bg-bark py-10">
   <div class="max-w-5xl mx-auto px-4">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <% [['3','School Centres'], ['209','Total Students'], ['15+','Teaching Staff'], ['396km','From Arusha']].forEach(([n, l]) => { %>
+      <% [['3','School Centres','schools.stats.centres'], ['209','Total Students','schools.stats.students'], ['15+','Teaching Staff','schools.stats.staff'], ['396km','From Arusha','schools.stats.arusha']].forEach(([n, l, k]) => { %>
       <div class="reveal">
         <div class="font-display text-4xl font-bold text-gold-400 mb-1"><%= n %></div>
-        <div class="text-white/60 text-xs uppercase tracking-widest"><%= l %></div>
+        <div class="text-white/60 text-xs uppercase tracking-widest" data-i18n="<%= k %>"><%= l %></div>
       </div>
       <% }) %>
     </div>
@@ -34,7 +34,7 @@
     <!-- Centre 1: HQ -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="reveal rounded-3xl overflow-hidden shadow-xl aspect-[4/3] bg-terracotta-100">
-        <img src="/images/File 2.jpg" alt="Butemine Headquarters" class="w-full h-full object-cover" />
+        <img src="/images/File 3.jpg" alt="Butemine Headquarters" class="w-full h-full object-cover" />
       </div>
       <div class="reveal">
         <span class="section-label">Centre 01</span>
@@ -64,7 +64,7 @@
     <!-- Centre 2: Daycare -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="reveal lg:order-2 rounded-3xl overflow-hidden shadow-xl aspect-[4/3] bg-gold-100">
-        <img src="/images/File 3.jpg" alt="Sale Branch" class="w-full h-full object-cover" />
+        <img src="/images/File 19.jpg" alt="Sale Branch" class="w-full h-full object-cover" />
       </div>
       <div class="reveal lg:order-1">
         <span class="section-label">Centre 02</span>
@@ -94,7 +94,7 @@
     <!-- Centre 3: Jema -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="reveal rounded-3xl overflow-hidden shadow-xl aspect-[4/3] bg-forest-100">
-        <img src="/images/File 4.jpg" alt="Jema Branch" class="w-full h-full object-cover" />
+        <img src="/images/File 18.jpg" alt="Jema Branch" class="w-full h-full object-cover" />
       </div>
       <div class="reveal">
         <span class="section-label">Centre 03</span>
@@ -134,9 +134,9 @@
         <svg class="w-16 h-16 text-terracotta-400 mx-auto mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
         </svg>
-        <p class="font-display text-xl font-bold text-bark mb-2">Samunge Village, Ngorongoro District</p>
-        <p class="text-bark/60 text-sm mb-4">Arusha Region, Tanzania · ~396km from Arusha City</p>
-        <a href="https://maps.google.com/?q=Samunge+Village+Ngorongoro+Tanzania" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm">
+        <p class="font-display text-xl font-bold text-bark mb-2" data-i18n="schools.map.title">Samunge Village, Ngorongoro District</p>
+        <p class="text-bark/60 text-sm mb-4" data-i18n="schools.map.subtitle">Arusha Region, Tanzania · ~396km from Arusha City</p>
+        <a href="https://maps.google.com/?q=Samunge+Village+Ngorongoro+Tanzania" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm" data-i18n="schools.map.btn">
           Open in Google Maps
         </a>
       </div>
@@ -147,11 +147,11 @@
 <!-- CTA -->
 <section class="py-16 bg-cream">
   <div class="max-w-3xl mx-auto px-4 text-center reveal">
-    <h3 class="font-display text-2xl font-bold text-bark mb-3">Interested in Enrolling?</h3>
-    <p class="text-bark/70 mb-8">Visit our admissions page to learn about requirements, fees, and how to apply.</p>
+    <h3 class="font-display text-2xl font-bold text-bark mb-3" data-i18n="schools.cta.title">Interested in Enrolling?</h3>
+    <p class="text-bark/70 mb-8" data-i18n="schools.cta.subtitle">Visit our admissions page to learn about requirements, fees, and how to apply.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/admissions" class="btn-primary">View Admissions</a>
-      <a href="/contact" class="btn-outline-dark">Contact a Campus</a>
+      <a href="/admissions" class="btn-primary" data-i18n="schools.cta.admissions">View Admissions</a>
+      <a href="/contact" class="btn-outline-dark" data-i18n="schools.cta.contact">Contact a Campus</a>
     </div>
   </div>
 </section>

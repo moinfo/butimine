@@ -5,3 +5,4 @@ public/css/style.css
 .env
 .playwright-mcp/
 mobile-*.png
+.idea/
